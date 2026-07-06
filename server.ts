@@ -17,7 +17,7 @@ async function startServer() {
   // AI Dispatch & Moving Assistant endpoint
   app.post("/api/chat", async (req, res) => {
     try {
-      const { messages, language } = req.body;
+      const { messages, language = 'en' } = req.body;
       if (!Array.isArray(messages) || messages.length === 0) {
         return res.status(400).json({ error: "Invalid message payload." });
       }
@@ -29,21 +29,33 @@ async function startServer() {
         });
       }
 
-      const ai = new GoogleGenAI({ apiKey });
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          }
+        }
+      });
 
-      const languageMap: Record<string, string> = {
-        en: "English",
-        es: "Spanish",
-        ru: "Russian",
-        ar: "Arabic",
-        lt: "Lithuanian"
+      const langMap: { [key: string]: string } = {
+        en: 'English',
+        es: 'Spanish (Español)',
+        lt: 'Lithuanian (Lietuvių)',
+        ru: 'Russian (Русский)',
+        ja: 'Japanese (日本語)',
+        ar: 'Arabic (العربية)'
       };
-      const targetLang = languageMap[language] || "English";
+
+      const preferredLangName = langMap[language] || 'English';
 
       const systemInstruction = `You are Matt's AI Dispatch Assistant for Movers312, Chicago's premier local relocation company (Illinois ICC Dispatch #3280B, US DOT #4893122).
 Your role is to assist potential movers across Chicago and Cook County (Loop, Lincoln Park, Logan Square, Wicker Park, Lakeview, West Loop, Bucktown, Evanston, Oak Park, etc.).
 
-CRITICAL LANGUAGE REQUIREMENT: The customer is browsing the site in ${targetLang}. You MUST write your entire response strictly and fluently in ${targetLang}.
+Multilingual Directive:
+- You support English, Spanish, Lithuanian, Russian, Japanese, and Arabic fluently.
+- Current preferred UI language: ${preferredLangName}.
+- Always reply in the language the user is asking in, or in ${preferredLangName} if ambiguous.
 
 Company & Service Guidelines:
 - Base Rates: Starting around $360 for 2 professional movers and a fully equipped truck.

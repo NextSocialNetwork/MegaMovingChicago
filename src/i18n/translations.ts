@@ -1,510 +1,804 @@
-export type LanguageCode = 'en' | 'es' | 'ru' | 'ar' | 'lt';
+export type Language = 'en' | 'es' | 'lt' | 'ru' | 'ja' | 'ar';
 
-export interface TranslationDict {
-  // Top Bar
-  iccDispatch: string;
-  liveDispatch: string;
-  chicagoMovingCompany: string;
-
-  // Hero
-  heroBadge: string;
-  heroTitle: string;
-  heroSubtitle: string;
-
-  // Config Grid
-  configParams: string;
-  configParamsSub: string;
-  stepConfig: string;
-  secAZip: string;
-  pickupZip: string;
-  dropoffZip: string;
-  estDistance: string;
-
-  // Sec B
-  secBCargo: string;
-  selectFleet: string;
-  twoMovers16ft: string;
-  threeMovers26ft: string;
-  fourMovers26ft: string;
-  tariffRate: string;
-  twoHrsMin: string;
-  adjustDuration: string;
-  baseLaborEst: string;
-
-  // Sec C
-  secCCalendar: string;
-  relocationDate: string;
-  preferredWindow: string;
-  mornWindow: string;
-  aftWindow: string;
-
-  // Sec D
-  secDOptions: string;
-  stairObstacles: string;
-  stairNone: string;
-  stairFloors: string;
-  stairWalkway: string;
-  packingKitBox: string;
-  packingNone: string;
-  packingStudio: string;
-  packing2Bed: string;
-  packing4Bed: string;
-  specialtyHeavy: string;
-  laborOnlyOption: string;
-
-  // Quote Summary Card
-  instantEstimate: string;
-  bindingTariff: string;
-  baseHourlyFee: string;
-  packingKitFeeLabel: string;
-  elevationFeeLabel: string;
-  oversizedHandlingLabel: string;
-  laborOnlyDeductionLabel: string;
-  securityDepositLabel: string;
-  reqToLock: string;
-  guaranteedBoundEst: string;
-  stateInsuredInc: string;
-  illinoisTariffsLocked: string;
-  tariffsExplanation: string;
-  movingGuarantees: string;
-  guarantee1: string;
-  guarantee2: string;
-  guarantee3: string;
-
-  // Core Features
-  whyTrustBadge: string;
-  whyTrustTitle: string;
-  whyTrustSub: string;
-  feature1Title: string;
-  feature1Desc: string;
-  feature2Title: string;
-  feature2Desc: string;
-  feature3Title: string;
-  feature3Desc: string;
-  feature4Title: string;
-  feature4Desc: string;
-
-  // Testimonials & FAQs
-  reviewsBadge: string;
-  reviewsTitle: string;
-  faqBadge: string;
-  faqTitle: string;
-  faqSub: string;
-
-  // Footer & Chat
-  footerDesc: string;
-  rightsReserved: string;
-  aiChatToggle: string;
-  aiChatTitle: string;
-  aiChatSub: string;
-  aiChatPlace: string;
-  aiChatGreeting: string;
+export interface LanguageOption {
+  code: Language;
+  label: string;
+  flag: string;
 }
 
-export const translations: Record<LanguageCode, TranslationDict> = {
+export const LANGUAGES: LanguageOption[] = [
+  { code: 'en', label: 'English', flag: '🇺🇸' },
+  { code: 'es', label: 'Español', flag: '🇲🇽' },
+  { code: 'lt', label: 'Lietuvių', flag: '🇱🇹' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+  { code: 'ja', label: '日本語', flag: '🇯🇵' },
+  { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+];
+
+export const translations = {
   en: {
-    iccDispatch: "ILLINOIS ICC DISPATCH #3280B",
+    // Top Bar & Header
+    iccLicense: "ILLINOIS ICC DISPATCH #3280B",
     liveDispatch: "Live Driver's Dispatch",
-    chicagoMovingCompany: "Chicago Moving Company",
-    heroBadge: "Chicagoland's Top-Rated Moving Crew",
-    heroTitle: "Movers312 Professional Moving Services & Price Estimator",
-    heroSubtitle: "Configure your moving parameters, crew requirements, and access variables below for a guaranteed, 100% binding quote instantly!",
-    configParams: "Configuration Parameters",
-    configParamsSub: "Specify layout dimensions and cargo conditions.",
-    stepConfig: "Step Config",
-    secAZip: "Chicagoland ZIP Coordinates",
-    pickupZip: "Pick-up ZIP (Origin Location)",
-    dropoffZip: "Drop-off ZIP (Destination Location)",
-    estDistance: "Est. Route Distance",
-    secBCargo: "Move Size & Fleet Configuration",
-    selectFleet: "Select 16-FT or 26-FT Urban Fleet Configuration",
-    twoMovers16ft: "2 Movers & 16-FT Urban Fleet",
-    threeMovers26ft: "3 Movers & 26-FT Urban Fleet",
-    fourMovers26ft: "4 Movers & 26-FT Urban Fleet",
-    tariffRate: "Tariff Rate",
-    twoHrsMin: "2 Hrs Min",
-    adjustDuration: "Adjust Estimated Duration",
-    baseLaborEst: "Base Labor Rate Estimate",
-    secCCalendar: "Dispatch Calendar & Timings",
-    relocationDate: "Relocation Date Check-In",
-    preferredWindow: "Preferred Service Window",
-    mornWindow: "8:00 AM Prompt",
-    aftWindow: "1:00 PM Window",
-    secDOptions: "Stairways & Material Kit Options",
-    stairObstacles: "Stairway / Elevation Obstacles",
-    stairNone: "Elevator / Ground",
-    stairFloors: "3rd Floor & Up Stairs",
-    stairWalkway: "Long Walkway / Courtyard",
-    packingKitBox: "Packing Materials Box Kit",
-    packingNone: "No Packing Needed",
-    packingStudio: "Studio / 1-Bed Kit",
-    packing2Bed: "2-3 Bed Full Home Kit",
-    packing4Bed: "4+ Bed Master Kit",
-    specialtyHeavy: "Heavy Item Handling (>300 lbs safe/piano)",
-    laborOnlyOption: "Labor-Only Rate (Customer provides truck -25%)",
-    instantEstimate: "INSTANT ESTIMATE",
-    bindingTariff: "BINDING TARIFF BREAKDOWN",
-    baseHourlyFee: "Base Hourly Labor Fee",
-    packingKitFeeLabel: "Packing Materials Box Kit",
-    elevationFeeLabel: "Elevation / Stairs / Walkway Fee",
-    oversizedHandlingLabel: "Oversized Specialty Handling",
-    laborOnlyDeductionLabel: "Labor-Only Rate Deduction (-25%)",
-    securityDepositLabel: "Security Deposit Required",
-    reqToLock: "Required to lock dispatch moving window",
-    guaranteedBoundEst: "Guaranteed Bound Estimate",
-    stateInsuredInc: "BIP / State Insured Included",
-    illinoisTariffsLocked: "Illinois Tariffs Locked",
-    tariffsExplanation: "Estimates are generated from actual coordinates matrices in our Cook County system. No secondary surprise charges will apply.",
-    movingGuarantees: "Moving Guarantees",
-    guarantee1: "Free 12 heavy duty moving blankets per crew",
-    guarantee2: "Dual layered security straps on specialized wall systems",
-    guarantee3: "Wardrobe boxes accessible for wardrobe transfer",
-    whyTrustBadge: "PROFESSIONAL CHICAGO RELOCATION CORE",
-    whyTrustTitle: "Why Chicago Trusts Movers312 Team",
-    whyTrustSub: "Serving our community since 2018 with absolute safety assurance, high-capacity vehicles, and a carefully trained local workforce.",
-    feature1Title: "1. Pure Bound Estimates",
-    feature1Desc: "The quote simulated here is matching what you sign. Zero hidden gas, mileage, or seasonal up-charges ever.",
-    feature2Title: "2. Premium Wraps & Pads",
-    feature2Desc: "All crew assets include up to 12 heavy duty moving blankets and premium stretch wrap layers free-of-charge.",
-    feature3Title: "3. Professional Dispatch 24/7",
-    feature3Desc: "Led by local supervisor Matt, our professional movers know typical Chicago tight corridors and stairs challenges.",
-    feature4Title: "4. Full COI Insurance",
-    feature4Desc: "We provide instant Certificate of Insurance (COI) for downtown luxury high-rises and loading dock reservations.",
-    reviewsBadge: "VERIFIED CHICAGO VERDICTS",
-    reviewsTitle: "Customer Testimonials",
-    faqBadge: "DISPATCH LOGISTICS HELP DESK",
+    companyTitle: "MOVERS",
+    tagline: "Chicago Moving Company",
+    callNow: "Call (312) 385-9229",
+    languageSelect: "Language",
+
+    // Hero Section
+    heroBadge: "CHICAGO'S #1 LOCAL RELOCATION EXPERTS",
+    heroTitle: "Instant Guaranteed Chicago Moving Quotes",
+    heroSubtitle: "No hidden stair fees, transparent rates, local Cook County movers, and 100% binding quotes configured live in English, Spanish, Lithuanian & Russian.",
+    feature1: "ICC Licensed & Insured",
+    feature2: "$0 Local Travel Promotion",
+    feature3: "Instant Online Binding Quote",
+    feature4: "Multilingual Crew (EN/ES/LT/RU)",
+
+    // Form Steps & Estimator
+    step1Title: "1. Move Specifications & Distance",
+    sizeOfMoveLabel: "Size of Residence / Scope",
+    sizeStudio: "Studio Unit",
+    size1bed: "1-Bedroom Flat",
+    size2bed: "2-Bedroom Residence",
+    size3bed: "3+ Bedroom Estate",
+
+    startZipLabel: "Origin Chicago Zip Code",
+    endZipLabel: "Destination Chicago Zip Code",
+    estHoursLabel: "Estimated Hours Needed",
+    estHoursHelp: "Minimum 2 hours, standard 3-4 hrs for 1-2 bedrooms",
+
+    crewTruckLabel: "Crew & Vehicle Setup",
+    crew2: "2 Movers & 16-FT Box Truck ($120/hr)",
+    crew3: "3 Movers & 26-FT Box Truck ($180/hr)",
+    crew4: "4 Movers & 26-FT Box Truck ($230/hr)",
+
+    stairAccessLabel: "Stairways & Access Challenge",
+    stairNone: "Elevator / Ground Floor (No Stair Surcharge)",
+    stairWalkup: "Multi-Flight Stairs Walkup (+ $35/hr)",
+    stairCourtyard: "Long Courtyard Walkway Route (+ $40/hr)",
+
+    packingKitLabel: "Material Packing Prep Kit (+ $45)",
+    packingKitDesc: "Includes 15 heavy-duty boxes, tape, stretch wrap & wardrobe boxes",
+
+    laborOnlyLabel: "Labor Only Service (Customer Handles Vehicle)",
+    heavyItemsLabel: "Heavy Specialty Item Surcharge (Piano, Safe, Marble Table >300 lbs) (+ $150)",
+
+    step2Title: "2. Schedule & Contact Reservation",
+    fullNameLabel: "Full Name",
+    fullNamePlaceholder: "e.g., Alex Johnson",
+    emailLabel: "Email Address",
+    emailPlaceholder: "alex@example.com",
+    phoneLabel: "Phone Number",
+    phonePlaceholder: "(312) 555-0199",
+    movingDateLabel: "Requested Moving Date",
+    timeSlotLabel: "Preferred Arrival Window",
+    morningSlot: "Morning Arrival (8:00 AM - 10:00 AM)",
+    afternoonSlot: "Afternoon Arrival (1:00 PM - 3:00 PM)",
+    specialNotesLabel: "Special Crew Notes / Building Instructions",
+    specialNotesPlaceholder: "e.g., Building requires elevator reservation, key at front desk...",
+
+    bookButton: "Lock In My Instant Quote & Reserve Movers",
+    submitting: "Registering Reservation...",
+
+    // Live Price Breakdown Card
+    guaranteedQuoteTitle: "Guaranteed Live Moving Quote",
+    baseRate: "Base Crew & Truck Rate",
+    estimatedDistance: "Estimated Distance",
+    heavyFee: "Heavy Specialty Item Surcharge",
+    stairFee: "Stair / Walkway Surcharge",
+    packingFee: "Packing Material Kit",
+    laborDiscount: "Labor Only Discount",
+    totalGuaranteed: "Total Guaranteed Binding Quote",
+    depositNotice: "$100 Security Deposit Required on Cash App to confirm driver dispatch.",
+    priceLockBadge: "Guaranteed Price Lock",
+
+    // Map & Route Visualizer
+    routeVisualizerTitle: "Interactive Route Map & Distance Visualizer",
+    chicagoMapTitle: "Full City of Chicago Interactive Coverage Map",
+    wholeChicagoCoverage: "We Cover 100% of the Entire City of Chicago & Cook County (All 77 Neighborhoods)",
+    distanceMiles: "Distance between ZIPs",
+    noTravelFeePromotion: "$0 Local Travel Promotion Applied!",
+
+    // Confirmation Receipt Modal / Success Box
+    successTitle: "Move Reservation Confirmed!",
+    reservationId: "Reservation ID",
+    depositHeader: "Cash App Deposit Instructions",
+    depositBody: "Please send your $100 security deposit via Cash App to $Movers312 with your Reservation ID in the memo to finalize driver assignment.",
+    printReceipt: "Print / Save Confirmation Receipt",
+    calculateAnother: "Calculate Another Quote",
+
+    // Interactive Checklist
+    checklistTitle: "Your Chicago Moving Timeline Checklist",
+    checklistSubtitle: "Stay organized step-by-step for a stress-free relocation.",
+    task1: "Step 1: Declutter rooms & donate/sell unneeded items",
+    task2: "Step 2: Pack fragile glassware carefully (Or select our Material Prep Kit!)",
+    task3: "Step 3: Clear paths, reserve elevator access, or pre-arrange alley parking routes",
+    task4: "Step 4: Lock in crew dispatch by sending the required $100 security deposit on Cash App",
+    task5: "Step 5: Bundle essential records, laptop, medicines, and keys in your personal backpack",
+
+    // FAQ Section
     faqTitle: "Frequently Asked Questions",
-    faqSub: "Click any prompt to expand instant guidance from our central Cook County dispatch center:",
-    footerDesc: "Specialized high-fidelity cargo relocation across Chicago and surrounding Cook County neighborhoods. We ensure standard binding rates, absolute safety assurance blanket wrapping, and background-checked operators.",
-    rightsReserved: "© 2026 Movers312 Company. All rights reserved. Licensed Illinois Movers.",
-    aiChatToggle: "AI Support Chat",
-    aiChatTitle: "Movers312 AI Support",
-    aiChatSub: "Matt's Dispatch Assistant • 24/7",
-    aiChatPlace: "Ask about rates, packing, stairs...",
-    aiChatGreeting: "👋 Hi there! I'm Matt's AI Dispatch Assistant. Have questions about moving across Chicago, building regulations, or getting an instant binding quote? Ask me anything!"
+    q1: "Are there hidden fees for stairs or long walks?",
+    a1: "No! Everything is calculated transparently in your instant quote based on your stair and walkway selections.",
+    q2: "How does the $100 deposit work?",
+    a2: "Your $100 deposit locks in your assigned crew and truck for your chosen date and time slot, payable via Cash App.",
+    q3: "Do you supply building Certificates of Insurance (COI)?",
+    a3: "Yes! We provide complimentary COIs for high-rise elevator buildings across Chicago and Cook County.",
+    q4: "What languages does your crew speak?",
+    a4: "Our dispatch team and movers speak English, Spanish, Lithuanian, and Russian to ensure smooth communication.",
+
+    // Search History / Archived Quotes
+    historyTitle: "Search Archived Quotes & Reservations",
+    searchPlaceholder: "Search by ID, name, email or ZIP...",
+    noBookingsFound: "No archived quotes found.",
+    viewReceipt: "View Receipt",
+
+    // Footer
+    footerDesc: "Chicago's premier licensed relocation experts serving Cook County with transparent binding pricing.",
+    footerLanguages: "Multilingual Support: English • Español • Lietuvių • Русский",
+    rightsReserved: "All rights reserved. Illinois ICC Dispatch #3280B.",
+
+    // AI Chat Component
+    aiSupportTitle: "Movers312 AI Support",
+    aiSupportSubtitle: "Matt's Dispatch Assistant • 24/7",
+    aiGreeting: "👋 Hi there! I'm Matt's AI Dispatch Assistant. Have questions about moving across Chicago, building regulations, or getting an instant binding quote? Ask me anything in English, Spanish, Lithuanian, or Russian!",
+    aiInputPlaceholder: "Ask about rates, packing, stairs...",
+    instantQuoteBar: "Instant Cook County Quotes",
+    aiTyping: "Matt's AI is typing...",
   },
+
   es: {
-    iccDispatch: "DESPACHO ILLINOIS ICC #3280B",
-    liveDispatch: "Despacho en Vivo de Conductores",
-    chicagoMovingCompany: "Empresa de Mudanzas de Chicago",
-    heroBadge: "El Mejor Equipo de Mudanzas de Chicago",
-    heroTitle: "Movers312 Servicios Profesionales de Mudanza y Calculadora de Precios",
-    heroSubtitle: "¡Configure sus parámetros de mudanza, requisitos de personal y variables de acceso a continuación para obtener una cotización vinculante garantizada al 100% al instante!",
-    configParams: "Parámetros de Configuración",
-    configParamsSub: "Especifique las dimensiones y condiciones de la carga.",
-    stepConfig: "Configuración",
-    secAZip: "Coordenadas Postales de Chicago",
-    pickupZip: "Código Postal de Recogida (Origen)",
-    dropoffZip: "Código Postal de Entrega (Destino)",
-    estDistance: "Distancia Estimada de la Ruta",
-    secBCargo: "Tamaño de Mudanza y Flota",
-    selectFleet: "Seleccione Flota Urbana de 16-FT o 26-FT",
-    twoMovers16ft: "2 Mudanceros y Camión 16-FT",
-    threeMovers26ft: "3 Mudanceros y Camión 26-FT",
-    fourMovers26ft: "4 Mudanceros y Camión 26-FT",
-    tariffRate: "Tarifa",
-    twoHrsMin: "2 Hrs Mín",
-    adjustDuration: "Ajustar Duración Estimada",
-    baseLaborEst: "Estimación Base de Mano de Obra",
-    secCCalendar: "Calendario y Horarios",
-    relocationDate: "Fecha de la Mudanza",
-    preferredWindow: "Horario Preferido",
-    mornWindow: "8:00 AM Puntual",
-    aftWindow: "1:00 PM Tarde",
-    secDOptions: "Opciones de Escaleras y Embalaje",
-    stairObstacles: "Obstáculos de Escaleras / Elevación",
-    stairNone: "Ascensor / Planta Baja",
-    stairFloors: "3er Piso o Superior",
-    stairWalkway: "Pasillo Largo / Patio",
-    packingKitBox: "Kit de Materiales de Embalaje",
-    packingNone: "Sin Embalaje Necesario",
-    packingStudio: "Kit Estudio / 1 Hab",
-    packing2Bed: "Kit Casa 2-3 Hab",
-    packing4Bed: "Kit Completo 4+ Hab",
-    specialtyHeavy: "Carga Pesada (>300 lbs piano/caja fuerte)",
-    laborOnlyOption: "Solo Mano de Obra (Cliente pone camión -25%)",
-    instantEstimate: "COTIZACIÓN INSTANTÁNEA",
-    bindingTariff: "DESGLOSE DE TARIFA VINCULANTE",
-    baseHourlyFee: "Mano de Obra por Hora Base",
-    packingKitFeeLabel: "Kit de Materiales de Embalaje",
-    elevationFeeLabel: "Tarifa por Escaleras / Pasillos",
-    oversizedHandlingLabel: "Manejo Especial de Carga Pesada",
-    laborOnlyDeductionLabel: "Descuento por Solo Mano de Obra (-25%)",
-    securityDepositLabel: "Depósito de Seguridad Requerido",
-    reqToLock: "Requerido para asegurar horario de mudanza",
-    guaranteedBoundEst: "Cotización Vinculante Garantizada",
-    stateInsuredInc: "BIP / Seguro Estatal Incluido",
-    illinoisTariffsLocked: "Tarifas de Illinois Protegidas",
-    tariffsExplanation: "Las cotizaciones se generan a partir de matrices reales en nuestro sistema del condado de Cook. Nunca se aplicarán cargos sorpresa secundarios.",
-    movingGuarantees: "Garantías de Mudanza",
-    guarantee1: "12 mantas de protección pesadas gratis por equipo",
-    guarantee2: "Correas de seguridad de doble capa en sistemas de pared",
-    guarantee3: "Cajas armario disponibles para traslado de ropa",
-    whyTrustBadge: "NÚCLEO PROFESIONAL DE MUDANZAS EN CHICAGO",
-    whyTrustTitle: "Por Qué Chicago Confía en Movers312",
-    whyTrustSub: "Sirviendo a nuestra comunidad desde 2018 con máxima seguridad, vehículos de gran capacidad y personal local altamente capacitado.",
-    feature1Title: "1. Cotizaciones Exactas",
-    feature1Desc: "El precio calculado aquí es exactamente lo que usted firma. Cero cargos ocultos por combustible o kilometraje.",
-    feature2Title: "2. Protección Premium",
-    feature2Desc: "Todos los camiones incluyen hasta 12 mantas acolchadas de protección y plástico estirable totalmente gratis.",
-    feature3Title: "3. Despacho 24/7",
-    feature3Desc: "Dirigidos por Matt, nuestros transportistas conocen a la perfección los pasillos estrechos y escaleras de Chicago.",
-    feature4Title: "4. Seguro COI Completo",
-    feature4Desc: "Emitimos Certificados de Seguro (COI) al instante para edificios de lujo en el centro y muelles de carga.",
-    reviewsBadge: "TESTIMONIOS VERIFICADOS EN CHICAGO",
-    reviewsTitle: "Reseñas de Clientes",
-    faqBadge: "CENTRO DE AYUDA LOGÍSTICA",
+    // Top Bar & Header
+    iccLicense: "DESPACHO ICC DE ILLINOIS #3280B",
+    liveDispatch: "Despacho de Conductores en Vivo",
+    companyTitle: "MOVERS",
+    tagline: "Compañía de Mudanzas en Chicago",
+    callNow: "Llamar al (312) 385-9229",
+    languageSelect: "Idioma",
+
+    // Hero Section
+    heroBadge: "EXPERTOS #1 EN MUDANZAS LOCALES DE CHICAGO",
+    heroTitle: "Cotizaciones Instantáneas y Garantizadas de Mudanza en Chicago",
+    heroSubtitle: "Sin tarifas ocultas por escaleras, precios transparentes, mudanceros locales de Cook County y cotizaciones 100% vinculantes configuradas en vivo en Inglés, Español, Lituano y Ruso.",
+    feature1: "Licencia ICC y Seguro",
+    feature2: "Promoción de $0 Costo de Viaje Local",
+    feature3: "Cotización Vinculante en Línea",
+    feature4: "Equipo Multilingüe (EN/ES/LT/RU)",
+
+    // Form Steps & Estimator
+    step1Title: "1. Especificaciones de Mudanza y Distancia",
+    sizeOfMoveLabel: "Tamaño de la Residencia / Alcance",
+    sizeStudio: "Estudio",
+    size1bed: "Apartamento de 1 Habitación",
+    size2bed: "Residencia de 2 Habitaciones",
+    size3bed: "Casa / Propiedad de 3+ Habitaciones",
+
+    startZipLabel: "Código Postal de Origen (Chicago)",
+    endZipLabel: "Código Postal de Destino (Chicago)",
+    estHoursLabel: "Horas Estimadas Necesarias",
+    estHoursHelp: "Mínimo 2 horas, estándar 3-4 horas para 1-2 habitaciones",
+
+    crewTruckLabel: "Equipo y Camión",
+    crew2: "2 Mudanceros y Camión de 16 pies ($120/hora)",
+    crew3: "3 Mudanceros y Camión de 26 pies ($180/hora)",
+    crew4: "4 Mudanceros y Camión de 26 pies ($230/hora)",
+
+    stairAccessLabel: "Desafío de Escaleras y Acceso",
+    stairNone: "Ascensor / Planta Baja (Sin Recargo)",
+    stairWalkup: "Escaleras sin Ascensor (+ $35/hora)",
+    stairCourtyard: "Pasillo o Patio Largo (+ $40/hora)",
+
+    packingKitLabel: "Kit de Materiales de Embalaje (+ $45)",
+    packingKitDesc: "Incluye 15 cajas resistentes, cinta, plástico de embalaje y cajas para ropa",
+
+    laborOnlyLabel: "Solo Mano de Obra (El cliente provee vehículo)",
+    heavyItemsLabel: "Recargo por Artículos Pesados Especiales (Piano, Caja Fuerte, Mesa de Mármol >300 lbs) (+ $150)",
+
+    step2Title: "2. Programación y Reserva de Contacto",
+    fullNameLabel: "Nombre Completo",
+    fullNamePlaceholder: "ej. Carlos Rodríguez",
+    emailLabel: "Correo Electrónico",
+    emailPlaceholder: "carlos@ejemplo.com",
+    phoneLabel: "Número de Teléfono",
+    phonePlaceholder: "(312) 555-0199",
+    movingDateLabel: "Fecha Solicitada de Mudanza",
+    timeSlotLabel: "Ventana de Llegada Preferida",
+    morningSlot: "Llegada en la Mañana (8:00 AM - 10:00 AM)",
+    afternoonSlot: "Llegada en la Tarde (1:00 PM - 3:00 PM)",
+    specialNotesLabel: "Notas Especiales para el Equipo / Instrucciones",
+    specialNotesPlaceholder: "ej. El edificio requiere reserva de ascensor, llave en recepción...",
+
+    bookButton: "Asegurar Mi Cotización Instantánea y Reservar",
+    submitting: "Registrando Reserva...",
+
+    // Live Price Breakdown Card
+    guaranteedQuoteTitle: "Cotización de Mudanza Garantizada",
+    baseRate: "Tarifa Base de Equipo y Camión",
+    estimatedDistance: "Distancia Estimada",
+    heavyFee: "Recargo por Artículos Pesados",
+    stairFee: "Recargo por Escaleras / Pasillo",
+    packingFee: "Kit de Materiales de Embalaje",
+    laborDiscount: "Descuento Solo Mano de Obra",
+    totalGuaranteed: "Cotización Total Garantizada y Vinculante",
+    depositNotice: "Se requiere un depósito de seguridad de $100 en Cash App para confirmar el despacho.",
+    priceLockBadge: "Precio Bloqueado y Garantizado",
+
+    // Map & Route Visualizer
+    routeVisualizerTitle: "Mapa de Ruta Interactivo y Visualizador de Distancia",
+    chicagoMapTitle: "Mapa Interactivo de Cobertura de Toda la Ciudad de Chicago",
+    wholeChicagoCoverage: "Cubrimos el 100% de Toda la Ciudad de Chicago y el Condado de Cook (Los 77 Vecindarios)",
+    distanceMiles: "Distancia entre Códigos Postales",
+    noTravelFeePromotion: "¡Promoción de $0 Costo de Viaje Local Aplicada!",
+
+    // Confirmation Receipt Modal / Success Box
+    successTitle: "¡Reserva de Mudanza Confirmada!",
+    reservationId: "ID de Reserva",
+    depositHeader: "Instrucciones de Depósito en Cash App",
+    depositBody: "Por favor envíe su depósito de seguridad de $100 vía Cash App a $Movers312 con su ID de Reserva en la nota para finalizar la asignación del equipo.",
+    printReceipt: "Imprimir / Guardar Recibo de Confirmación",
+    calculateAnother: "Calcular Otra Cotización",
+
+    // Interactive Checklist
+    checklistTitle: "Lista de Verificación para su Mudanza en Chicago",
+    checklistSubtitle: "Manténgase organizado paso a paso para una mudanza sin estrés.",
+    task1: "Paso 1: Depurar habitaciones y donar/vender cosas innecesarias",
+    task2: "Paso 2: Empacar la cristalería frágil con cuidado (¡O elija nuestro Kit de Materiales!)",
+    task3: "Paso 3: Despejar pasillos, reservar ascensor o preparar el estacionamiento",
+    task4: "Paso 4: Asegurar la reserva enviando el depósito de $100 por Cash App",
+    task5: "Paso 5: Agrupar documentos importantes, laptop, medicinas y llaves en su mochila personal",
+
+    // FAQ Section
     faqTitle: "Preguntas Frecuentes",
-    faqSub: "Haga clic en cualquier pregunta para ver la respuesta de nuestro centro de despacho:",
-    footerDesc: "Mudanzas especializadas de alta calidad en Chicago y vecindarios del condado de Cook. Garantizamos tarifas fijas, mantas de protección total y operadores verificados.",
-    rightsReserved: "© 2026 Movers312 Company. Todos los derechos reservados. Transportistas autorizados en Illinois.",
-    aiChatToggle: "Chat de Soporte IA",
-    aiChatTitle: "Soporte IA Movers312",
-    aiChatSub: "Asistente de Despacho de Matt • 24/7",
-    aiChatPlace: "Pregunte sobre tarifas, embalaje, escaleras...",
-    aiChatGreeting: "👋 ¡Hola! Soy el asistente de IA de Matt. ¿Tiene preguntas sobre mudanzas en Chicago, regulaciones de edificios o cotizaciones instantáneas? ¡Pregúnteme lo que sea!"
+    q1: "¿Hay cargos ocultos por escaleras o caminatas largas?",
+    a1: "¡No! Todo se calcula de manera transparente en su cotización instantánea según sus selecciones.",
+    q2: "¿Cómo funciona el depósito de $100?",
+    a2: "Su depósito de $100 asegura el equipo y camión asignados para la fecha y hora elegidas, pagadero vía Cash App.",
+    q3: "¿Proporcionan Certificado de Seguro (COI) para edificios?",
+    a3: "¡Sí! Proporcionamos COIs de cortesía para edificios con ascensor en todo Chicago y el condado de Cook.",
+    q4: "¿Qué idiomas habla el personal?",
+    a4: "Nuestro equipo de despacho y cargadores habla Inglés, Español, Lituano y Ruso para garantizar una comunicación fluida.",
+
+    // Search History / Archived Quotes
+    historyTitle: "Buscar Cotizaciones y Reservas Archivadas",
+    searchPlaceholder: "Buscar por ID, nombre, correo o código postal...",
+    noBookingsFound: "No se encontraron cotizaciones archivadas.",
+    viewReceipt: "Ver Recibo",
+
+    // Footer
+    footerDesc: "Expertos con licencia en mudanzas en Chicago sirviendo a Cook County con precios vinculantes transparentes.",
+    footerLanguages: "Soporte Multilingüe: English • Español • Lietuvių • Русский",
+    rightsReserved: "Todos los derechos reservados. Licencia ICC de Illinois #3280B.",
+
+    // AI Chat Component
+    aiSupportTitle: "Soporte IA Movers312",
+    aiSupportSubtitle: "Asistente de Despacho de Matt • 24/7",
+    aiGreeting: "👋 ¡Hola! Soy el asistente de despacho con IA de Matt. ¿Tienes preguntas sobre mudarte en Chicago, regulaciones de edificios o cómo obtener una cotización vinculante instantánea? ¡Pregúntame en español, inglés, lituano o ruso!",
+    aiInputPlaceholder: "Pregunta sobre tarifas, embalaje, escaleras...",
+    instantQuoteBar: "Cotizaciones Instantáneas en Cook County",
+    aiTyping: "La IA de Matt está escribiendo...",
   },
-  ru: {
-    iccDispatch: "ДИСПЕТЧЕРСКАЯ ИЛЛИНОЙС ICC #3280B",
-    liveDispatch: "Онлайн диспетчерская водителей",
-    chicagoMovingCompany: "Мувинговая компания Чикаго",
-    heroBadge: "Лучшая команда грузчиков в Чикаго",
-    heroTitle: "Movers312 Профессиональные мувинговые услуги и калькулятор цен",
-    heroSubtitle: "Настройте параметры переезда, требования к бригаде и условия доступа ниже для мгновенного получения гарантированной на 100% точной фиксированной цены!",
-    configParams: "Параметры конфигурации",
-    configParamsSub: "Укажите размеры помещения и условия перевозки груза.",
-    stepConfig: "Конфигурация",
-    secAZip: "Почтовые индексы Чикаго",
-    pickupZip: "Индекс погрузки (Откуда)",
-    dropoffZip: "Индекс выгрузки (Куда)",
-    estDistance: "Расчетное расстояние маршрута",
-    secBCargo: "Объем переезда и автопарк",
-    selectFleet: "Выберите фургон 16-FT или 26-FT",
-    twoMovers16ft: "2 грузчика и фургон 16-FT",
-    threeMovers26ft: "3 грузчика и фургон 26-FT",
-    fourMovers26ft: "4 грузчика и фургон 26-FT",
-    tariffRate: "Тариф",
-    twoHrsMin: "Мин. 2 часа",
-    adjustDuration: "Изменить расчетное время",
-    baseLaborEst: "Базовая стоимость работ",
-    secCCalendar: "Календарь и время подачи",
-    relocationDate: "Дата переезда",
-    preferredWindow: "Желаемое время",
-    mornWindow: "8:00 Утра точно",
-    aftWindow: "1:00 Дня окно",
-    secDOptions: "Этажи и упаковочные материалы",
-    stairObstacles: "Лестницы / Препятствия подъема",
-    stairNone: "Лифт / 1-й этаж",
-    stairFloors: "3-й этаж и выше (без лифта)",
-    stairWalkway: "Длинный проход / Двор",
-    packingKitBox: "Комплект упаковочных материалов",
-    packingNone: "Упаковка не требуется",
-    packingStudio: "Набор Студия / 1-комн",
-    packing2Bed: "Набор 2-3 комнатный дом",
-    packing4Bed: "Макси-набор 4+ комнат",
-    specialtyHeavy: "Тяжелые предметы (>300 фунтов сейф/пианино)",
-    laborOnlyOption: "Только грузчики (Грузовик клиента -25%)",
-    instantEstimate: "МГНОВЕННЫЙ РАСЧЕТ",
-    bindingTariff: "ДЕТАЛИЗАЦИЯ ФИКСИРОВАННОЙ ЦЕНЫ",
-    baseHourlyFee: "Почасовая работа бригады",
-    packingKitFeeLabel: "Упаковочные материалы",
-    elevationFeeLabel: "Доплата за этажи / пронос",
-    oversizedHandlingLabel: "Крупногабаритные тяжелые предметы",
-    laborOnlyDeductionLabel: "Скидка «Только грузчики» (-25%)",
-    securityDepositLabel: "Требуется депозит бронирования",
-    reqToLock: "Необходим для закрепления бригады",
-    guaranteedBoundEst: "Гарантированная точная цена",
-    stateInsuredInc: "Госстрахование включено",
-    illinoisTariffsLocked: "Тарифы штата Иллинойс зафиксированы",
-    tariffsExplanation: "Расчеты основаны на точных матрицах координат округа Кук. Никаких скрытых или дополнительных платежей не будет.",
-    movingGuarantees: "Наши гарантии",
-    guarantee1: "Бесплатно 12 плотных защитных одеял на бригаду",
-    guarantee2: "Двойные крепежные ремни в кузове фургона",
-    guarantee3: "Гардеробные коробки для перевозки одежды",
-    whyTrustBadge: "ПРОФЕССИОНАЛЬНЫЙ ПЕРЕЕЗД В ЧИКАГО",
-    whyTrustTitle: "Почему Чикаго доверяет команде Movers312",
-    whyTrustSub: "Работаем с 2018 года с полной гарантией сохранности вещей, вместительными грузовиками и обученным персоналом.",
-    feature1Title: "1. Честная фиксированная цена",
-    feature1Desc: "Рассчитанная здесь цена в точности совпадает с договором. Никаких доплат за бензин или километраж.",
-    feature2Title: "2. Премиум защита мебели",
-    feature2Desc: "В каждый фургон входят до 12 плотных защитных одеял и стрейч-пленка совершенно бесплатно.",
-    feature3Title: "3. Поддержка 24/7",
-    feature3Desc: "Под руководством Мэтта наши специалисты легко справляются со узкими коридорами и лестницами Чикаго.",
-    feature4Title: "4. Страховые сертификаты COI",
-    feature4Desc: "Мы мгновенно предоставляем сертификат COI для бронирования грузовых лифтов в небоскребах.",
-    reviewsBadge: "ОТЗЫВЫ КЛИЕНТОВ В ЧИКАГО",
-    reviewsTitle: "Отзывы клиентов",
-    faqBadge: "СПРАВОЧНАЯ СЛУЖБА ЛОГИСТИКИ",
-    faqTitle: "Часто задаваемые вопросы",
-    faqSub: "Нажмите на любой вопрос для получения подробного ответа:",
-    footerDesc: "Специализированные качественные переезды по Чикаго и округу Кук. Мы гарантируем фиксированные ставки, полную защиту мебели защитными одеялами и проверенный персонал.",
-    rightsReserved: "© 2026 Movers312 Company. Все права защищены. Лицензированные муверы Иллинойса.",
-    aiChatToggle: "ИИ Чат поддержки",
-    aiChatTitle: "ИИ Поддержка Movers312",
-    aiChatSub: "Диспетчер-ассистент Мэтта • 24/7",
-    aiChatPlace: "Спросите о ценах, упаковке, этажах...",
-    aiChatGreeting: "👋 Здравствуйте! Я ИИ ассистент диспетчера Мэтта. Есть вопросы о переезде по Чикаго, правилах зданий или мгновенном расчете цены? Задавайте любые вопросы!"
-  },
-  ar: {
-    iccDispatch: "تصريح شيكاغو إلينوي ICC #3280B",
-    liveDispatch: "إرسال السائقين المباشر",
-    chicagoMovingCompany: "شركة نقل أثاث شيكاغو",
-    heroBadge: "أفضل فريق نقل أثاث تقييمًا في شيكاغو",
-    heroTitle: "Movers312 خدمات النقل الاحترافية وحاسبة التكلفة",
-    heroSubtitle: "قم بتهيئة معايير النقل ومتطلبات الطاقم ومتغيرات الوصول أدناه للحصول على تسعيرة نهائية ومضمونة 100% على الفور!",
-    configParams: "معايير التهيئة",
-    configParamsSub: "حدد أبعاد المكان وظروف نقل الأثاث.",
-    stepConfig: "خطوة الإعداد",
-    secAZip: "إحداثيات الرمز البريدي لشيكاغو",
-    pickupZip: "الرمز البريدي للاستلام (المغادرة)",
-    dropoffZip: "الرمز البريدي للتسليم (الوصول)",
-    estDistance: "مسافة المسار المقدرة",
-    secBCargo: "حجم النقل وأسطول الشاحنات",
-    selectFleet: "اختر شاحنة أسطول المدينة 16 أو 26 قدم",
-    twoMovers16ft: "عاملان وشاحنة 16 قدم",
-    threeMovers26ft: "3 عمال وشاحنة 26 قدم",
-    fourMovers26ft: "4 عمال وشاحنة 26 قدم",
-    tariffRate: "التعرفة",
-    twoHrsMin: "حد أدنى 2 ساعات",
-    adjustDuration: "تعديل المدة المقدرة",
-    baseLaborEst: "تقدير تكلفة العمالة الأساسية",
-    secCCalendar: "جدول الإرسال والمواعيد",
-    relocationDate: "تاريخ النقل",
-    preferredWindow: "فترة النقل المفضلة",
-    mornWindow: "8:00 صباحًا بالضبط",
-    aftWindow: "1:00 ظهراً (فترة مسائية)",
-    secDOptions: "السلالم ومعدات التغليف",
-    stairObstacles: "عقبات السلالم / الارتفاع",
-    stairNone: "مصعد / الطابق الأرضي",
-    stairFloors: "الطابق الثالث فما فوق (بدون مصعد)",
-    stairWalkway: "ممر طويل / فناء داخلي",
-    packingKitBox: "حزمة مواد التغليف والحزم",
-    packingNone: "لا حاجة للتغليف",
-    packingStudio: "حزمة استوديو / غرفة واحدة",
-    packing2Bed: "حزمة منزل 2-3 غرف",
-    packing4Bed: "حزمة شاملة 4+ غرف",
-    specialtyHeavy: "نقل عناصر ثقيلة (>300 رطل بيانو/خزنة)",
-    laborOnlyOption: "عمال فقط (العميل يوفر الشاحنة -25%)",
-    instantEstimate: "التسعيرة الفورية",
-    bindingTariff: "تفصيل السعر النهائي المضمون",
-    baseHourlyFee: "أجرة العمالة بالساعة",
-    packingKitFeeLabel: "حزمة مواد التغليف",
-    elevationFeeLabel: "رسوم السلالم / الممرات الطويلة",
-    oversizedHandlingLabel: "نقل العناصر الثقيلة والخاصة",
-    laborOnlyDeductionLabel: "خصم عمال فقط (-25%)",
-    securityDepositLabel: "عربون الحجز المطلوب",
-    reqToLock: "مطلوب لتثبيت موعد طاقم النقل",
-    guaranteedBoundEst: "إجمالي السعر النهائي المضمون",
-    stateInsuredInc: "التأمين الحكومي شامل",
-    illinoisTariffsLocked: "تعرفات ولاية إلينوي مثبتة",
-    tariffsExplanation: "يتم إنشاء التقديرات من مصفوفات الإحداثيات الفعلية في نظام مقاطعة كوك. لن يتم تطبيق أي رسوم مفاجئة إضافية.",
-    movingGuarantees: "ضمانات النقل",
-    guarantee1: "12 بطانية نقل مبطنة مجانية لكل فريق",
-    guarantee2: "أشرطة تثبيت مزدوجة داخل الشاحنة",
-    guarantee3: "صناديق مخصصة لنقل الملابس المعلقة",
-    whyTrustBadge: "جوهر النقل الاحترافي في شيكاغو",
-    whyTrustTitle: "لماذا يثق سكان شيكاغو في فريق Movers312",
-    whyTrustSub: "نخدم مجتمعنا منذ عام 2018 بضمان السلامة المطلقة وشاحنات ذات سعة عالية وعمال محليين مدربين بعناية.",
-    feature1Title: "1. أسعار ثابتة وحقيقية",
-    feature1Desc: "السعر المحسوب هنا هو ما توقع عليه بالضبط. لا توجد أي رسوم خفية للبنزين أو المسافات.",
-    feature2Title: "2. تغليف وحماية فاخرة",
-    feature2Desc: "تشمل جميع الشاحنات ما يصل إلى 12 بطانية حماية ثقيلة وأغلفة بلاستيكية مجانًا تمامًا.",
-    feature3Title: "3. خدمة إرسال 24/7",
-    feature3Desc: "بإشراف المشرف مات، يعرف عمالنا كيفية التعامل مع الممرات الضيقة والسلالم في شيكاغو.",
-    feature4Title: "4. شهادات تأمين COI",
-    feature4Desc: "نوفر شهادات التأمين (COI) الفورية للمباني الفاخرة وحجوزات أرصفة التحميل.",
-    reviewsBadge: "آراء موثقة في شيكاغو",
-    reviewsTitle: "تجارب العملاء",
-    faqBadge: "مكتب مساعدة اللوجستيات",
-    faqTitle: "الأسئلة الشائعة",
-    faqSub: "انقر على أي سؤال لعرض الإرشاد الفوري من مركز إرسال مقاطعة كوك:",
-    footerDesc: "خدمات نقل أثاث عالية الجودة في شيكاغو والأحياء المجاورة في مقاطعة كوك. نضمن أسعارًا ثابتة وتغليفًا آمنًا بالبطانيات ومشغلين معتمدين.",
-    rightsReserved: "© 2026 شركة Movers312. جميع الحقوق محفوظة. مرخصون في ولاية إلينوي.",
-    aiChatToggle: "دردشة الدعم الفوري",
-    aiChatTitle: "دعم الذكاء الاصطناعي Movers312",
-    aiChatSub: "مساعد مات للإرسال • 24/7",
-    aiChatPlace: "اسأل عن الأسعار، التغليف، السلالم...",
-    aiChatGreeting: "👋 مرحبًا بك! أنا مساعد الإرسال الذكي الخاص بمات. هل لديك أسئلة حول النقل في شيكاغو، أو لوائح المباني، أو الحصول على عرض سعر فوري؟ اسألني عن أي شيء!"
-  },
+
   lt: {
-    iccDispatch: "ILINOJAUS ICC DISPEČERIS #3280B",
-    liveDispatch: "Tiesioginis vairuotojų dispečeris",
-    chicagoMovingCompany: "Čikagos perkraustymo kompanija",
-    heroBadge: "Geriausiai įvertinta perkraustymo komanda Čikagoje",
-    heroTitle: "Movers312 Profesionalios perkraustymo paslaugos ir kainų skaičiuoklė",
-    heroSubtitle: "Žemiau sukonfigūruokite savo perkraustymo parametrus, komandos poreikius ir privažiavimo sąlygas, kad iškart gautumėte 100% garantuotą tikslią kainą!",
-    configParams: "Konfigūracijos parametrai",
-    configParamsSub: "Nurodykite patalpų matmenis ir krovinių sąlygas.",
-    stepConfig: "Konfigūracija",
-    secAZip: "Čikagos pašto kodų koordinatės",
-    pickupZip: "Paėmimo pašto kodas (Pradinė vieta)",
-    dropoffZip: "Pristatymo pašto kodas (Paskirties vieta)",
-    estDistance: "Apskaičiuotas maršruto atstumas",
-    secBCargo: "Perkraustymo apimtis ir sunkvežimiai",
-    selectFleet: "Pasirinkite 16-FT arba 26-FT sunkvežimio konfigūraciją",
-    twoMovers16ft: "2 krovikai ir 16-FT sunkvežimis",
-    threeMovers26ft: "3 krovikai ir 26-FT sunkvežimis",
-    fourMovers26ft: "4 krovikai ir 26-FT sunkvežimis",
-    tariffRate: "Tarifas",
-    twoHrsMin: "Min. 2 val",
-    adjustDuration: "Koreguoti numatomą trukmę",
-    baseLaborEst: "Bazinė darbo kaina",
-    secCCalendar: "Dispečerio kalendorius ir laikas",
-    relocationDate: "Perkraustymo data",
-    preferredWindow: "Pageidaujamas laiko langas",
-    mornWindow: "8:00 Rytas (tiksliai)",
-    aftWindow: "1:00 Popietė",
-    secDOptions: "Laiptai ir pakavimo medžiagų rinkiniai",
-    stairObstacles: "Laiptai / Pakėlimo kliūtys",
-    stairNone: "Liftas / 1-as aukštas",
-    stairFloors: "3-ias aukštas ir aukščiau (be lifto)",
-    stairWalkway: "Ilgas takas / Vidinis kiemas",
-    packingKitBox: "Pakavimo medžiagų rinkinys",
-    packingNone: "Pakavimas nereikalingas",
-    packingStudio: "Rinkinys studijai / 1 kamb.",
-    packing2Bed: "Rinkinys 2-3 kamb. namui",
-    packing4Bed: "Didysis rinkinys 4+ kamb.",
-    specialtyHeavy: "Sunkūs daiktai (>300 svarų seifas/pianinas)",
-    laborOnlyOption: "Tik krovikai (Klientas suteikia sunkvežimį -25%)",
-    instantEstimate: "GREITASIS APSKAIČIAVIMAS",
-    bindingTariff: "FIKSUOTOS KAINOS IŠSKAIDYMAS",
-    baseHourlyFee: "Bazinė valandinė darbo kaina",
-    packingKitFeeLabel: "Pakavimo medžiagų rinkinys",
-    elevationFeeLabel: "Papildomas mokestis už laiptus / taką",
-    oversizedHandlingLabel: "Negabaričių sunkių daiktų nešimas",
-    laborOnlyDeductionLabel: "Nuolaida „Tik krovikai“ (-25%)",
-    securityDepositLabel: "Reikalingas užsakymo užstatas",
-    reqToLock: "Būtina perkraustymo laikui rezervuoti",
-    guaranteedBoundEst: "Garantuota fiksuota kaina",
-    stateInsuredInc: "Valstybinis draudimas įtrauktas",
-    illinoisTariffsLocked: "Ilinojaus tarifai užfiksuoti",
-    tariffsExplanation: "Kainos skaičiuojamos pagal Kuko apygardos koordinačių matricas. Jokių nenumatytų papildomų mokesčių nebus.",
-    movingGuarantees: "Perkraustymo garantijos",
-    guarantee1: "Nemokamos 12 krovinių apsaugos antklodžių komandai",
-    guarantee2: "Dvigubi saugos diržai vidinėse sunkvežimio sienose",
-    guarantee3: "Rūbų dėžės pakabinamiems drabužiams pervežti",
-    whyTrustBadge: "PROFESIONALAUS PERKRAUSTYMO PAGRINDAS",
-    whyTrustTitle: "Kodėl Čikaga pasitiki Movers312 komanda",
-    whyTrustSub: "Dirbame Čikagos bendruomenei nuo 2018 m. užtikrindami saugumą, talpius sunkvežimus ir kvalifikuotus darbuotojus.",
-    feature1Title: "1. Tiksli fiksuota kaina",
-    feature1Desc: "Čia apskaičiuota kaina lygiai atitinka sutartį. Jokių papildomų mokesčių už kurą ar kilometrus.",
-    feature2Title: "2. Aukščiausios klasės apsauga",
-    feature2Desc: "Į kiekvieną sunkvežimį nemokamai įeina iki 12 storų apsauginių antklodžių ir tampri plėvelė.",
-    feature3Title: "3. Dispečerio pagalba 24/7",
-    feature3Desc: "Vadovaujami Mato, mūsų krovikai puikiai pažįsta siaurus Čikagos koridorius bei laiptines.",
-    feature4Title: "4. COI draudimo sertifikatai",
-    feature4Desc: "Iškart parengiame draudimo sertifikatą (COI) dangoraižių krovinių liftams rezervuoti.",
-    reviewsBadge: "PATIKRINTI ČIKAGOS ATSILIEPIMAI",
-    reviewsTitle: "Klientų atsiliepimai",
-    faqBadge: "LOGISTIKOS PAGALBOS CENTRAS",
-    faqTitle: "Dažniausiai užduodami klausimai",
-    faqSub: "Spauskite ant bet kurio klausimo, kad pamatytumėte išsamų dispečerio atsakymą:",
-    footerDesc: "Specializuotos aukštos kokybės krovinių gabenimo paslaugos Čikagoje ir aplinkiniuose Kuko apygardos rajonuose. Užtikriname standartines fiksuotas kainas ir patikrintus darbuotojus.",
-    rightsReserved: "© 2026 Movers312 Company. Visos teisės saugomos. Licencijuoti Ilinojaus perkraustytojai.",
-    aiChatToggle: "DI Pagalbos Pokalbis",
-    aiChatTitle: "Movers312 DI Pagalba",
-    aiChatSub: "Mato dispečerio asistentas • 24/7",
-    aiChatPlace: "Klauskite apie kainas, pakavimą, laiptus...",
-    aiChatGreeting: "👋 Sveiki! Aš esu Mato DI dispečerio asistentas. Turite klausimų apie perkraustymą Čikagoje, pastatų taisykles ar norite gauti tikslią kainą? Klauskite manęs bet ko!"
+    // Top Bar & Header
+    iccLicense: "ILINOJAUS ICC DISPEČERINĖ #3280B",
+    liveDispatch: "Tiesioginis Vairuotojų Dispečeris",
+    companyTitle: "MOVERS",
+    tagline: "Čikagos Perkraustymo Įmonė",
+    callNow: "Skambinti (312) 385-9229",
+    languageSelect: "Kalba",
+
+    // Hero Section
+    heroBadge: "#1 VIETINIAI PERKRAUSTYMO EKSPERTAI ČIKAGOJE",
+    heroTitle: "Momentinės ir Garantuotos Čikagos Perkraustymo Kainos",
+    heroSubtitle: "Jokių paslėptų mokesčių už laiptus, skaidrūs įkainiai, vietiniai Cook County kraustytojai ir 100% privalomos kainos anglų, ispanų, lietuvių bei rusų kalbomis.",
+    feature1: "ICC Licencijuota ir Apdrausta",
+    feature2: "$0 Vietinio Važiavimo Akcija",
+    feature3: "Momentinė Privaloma Kaina Interne",
+    feature4: "Daugiakalbė Komanda (EN/ES/LT/RU)",
+
+    // Form Steps & Estimator
+    step1Title: "1. Perkraustymo Specifikacijos ir Atstumas",
+    sizeOfMoveLabel: "Būsto Dydis / Apimtis",
+    sizeStudio: "Studijos Tipo Būstas",
+    size1bed: "1 Miegamojo Bute",
+    size2bed: "2 Miegamųjų Bute",
+    size3bed: "3+ Miegamųjų Būstas / Namas",
+
+    startZipLabel: "Pradžios Čikagos Pašto Kodas",
+    endZipLabel: "Paskirties Čikagos Pašto Kodas",
+    estHoursLabel: "Numatomas Valandų Skaičius",
+    estHoursHelp: "Minimalus laikas 2 val., standartinis 3-4 val. 1-2 miegamiesiems",
+
+    crewTruckLabel: "Darbuotojai ir Sunkvežimis",
+    crew2: "2 Kraustytojai ir 16 Pėdų Sunkvežimis ($120/val.)",
+    crew3: "3 Kraustytojai ir 26 Pėdų Sunkvežimis ($180/val.)",
+    crew4: "4 Kraustytojai ir 26 Pėdų Sunkvežimis ($230/val.)",
+
+    stairAccessLabel: "Laiptai ir Priėjimo Sąlygos",
+    stairNone: "Liftas / Pirmas Aukštas (Bez Papildomo Mokesčio)",
+    stairWalkup: "Laiptai Be Lifto (+ $35/val.)",
+    stairCourtyard: "Ilgas Kiemas / Pasivaikščiojimo Takas (+ $40/val.)",
+
+    packingKitLabel: "Pakavimo Medžiagų Rinkinys (+ $45)",
+    packingKitDesc: "Įeina 15 tvirtų dėžių, juosta, plėvelė ir dėžės drabužiams",
+
+    laborOnlyLabel: "Tik Kraustytojų Darbas (Klientas Parūpina Transportą)",
+    heavyItemsLabel: "Sunkių Dažtų Papildomas Mokestis (Fortepijonas, Seifas, Marble Stalas >300 lbs) (+ $150)",
+
+    step2Title: "2. Laiko ir Kontakto Rezervacija",
+    fullNameLabel: "Vardas ir Pavardė",
+    fullNamePlaceholder: "pvz., Mantas Petrauskas",
+    emailLabel: "El. Pašto Adresas",
+    emailPlaceholder: "mantas@pavyzdys.lt",
+    phoneLabel: "Telefono Numeris",
+    phonePlaceholder: "(312) 555-0199",
+    movingDateLabel: "Pageidaujama Perkraustymo Data",
+    timeSlotLabel: "Pageidaujamas Atvykimo Laikas",
+    morningSlot: "Rytinis Atvykimas (8:00 - 10:00)",
+    afternoonSlot: "Popietinis Atvykimas (13:00 - 15:00)",
+    specialNotesLabel: "Specialios Pastabos Komandai / Pastato Taisyklės",
+    specialNotesPlaceholder: "pvz., Pastate reikalinga lifto rezervacija, raktai pas budėtoją...",
+
+    bookButton: "Užtvirtinti Kaintą ir Rezervuoti Kraustytojus",
+    submitting: "Registruojama Rezervacija...",
+
+    // Live Price Breakdown Card
+    guaranteedQuoteTitle: "Garantuota Perkraustymo Kaina",
+    baseRate: "Bazinė Komandos ir Sunkvežimio Kaina",
+    estimatedDistance: "Numatomas Atstumas",
+    heavyFee: "Sunkių Daiktų Mokestis",
+    stairFee: "Laiptų / Kiemo Mokestis",
+    packingFee: "Pakavimo Medžiagų Rinkinys",
+    laborDiscount: "Tik Darbo Nuolaida",
+    totalGuaranteed: "Galutinė Garantuota Privaloma Kaina",
+    depositNotice: "Reikalingas $100 depozitas per Cash App vairuotojo priskyrimui patvirtinti.",
+    priceLockBadge: "Garantuota Užfiksuota Kaina",
+
+    // Map & Route Visualizer
+    routeVisualizerTitle: "Interaktyvus Maršruto Žemėlapis ir Atstumas",
+    chicagoMapTitle: "Visos Čikagos Miesto Interaktyvus Žemėlapis",
+    wholeChicagoCoverage: "Aptarnaujame 100% Visą Čikagos Miestą ir Kuko Apskritį (Visus 77 Rajonus)",
+    distanceMiles: "Atstumas Tarp Pašto Kodų",
+    noTravelFeePromotion: "Pritaikyta $0 Vietinio Važiavimo Akcija!",
+
+    // Confirmation Receipt Modal / Success Box
+    successTitle: "Perkraustymo Rezervacija Patvirtinta!",
+    reservationId: "Rezervacijos ID",
+    depositHeader: "Cash App Depozito Instrukcijos",
+    depositBody: "Prašome atsiųsti $100 saugumo depozitą per Cash App adresu $Movers312, nurodant savo Rezervacijos ID pastabose.",
+    printReceipt: "Spausdinti / Išsaugoti Patvirtinimą",
+    calculateAnother: "Skaičiuoti Kitą Kainą",
+
+    // Interactive Checklist
+    checklistTitle: "Jūsų Čikagos Perkraustymo Darbų Sąrašas",
+    checklistSubtitle: "Suplanuokite perkraustymą žingsnis po žingsnio be streso.",
+    task1: "1 Žingsnis: Sutvarkykite kambarius, atiduokite arba parduokite nereikalingus daiktus",
+    task2: "2 Žingsnis: Kruopščiai supakuokite trapius daiktus (Arba pasirinkite mūsų pakavimo rinkinį!)",
+    task3: "3 Žingsnis: Atlaisvinkite praėjimus, rezervuokite liftą ar parkavimą",
+    task4: "4 Žingsnis: Užtvirtinkite laiko rezervaciją pervesdami $100 depozitą per Cash App",
+    task5: "5 Žingsnis: Svarbius dokumentus, nešiojamąjį kompiuterį, vaistus ir raktus susidėkite į kuprinę",
+
+    // FAQ Section
+    faqTitle: "Dažnai Užduodami Klausimai",
+    q1: "Ar yra paslėptų mokesčių už laiptus ar ilgą nešimą?",
+    a1: "Ne! Viskas skaidriai apskaičiuojama momentinėje kalkuliacijoje pagal jūsų pasirinkimus.",
+    q2: "Kaip veikia $100 depozitas?",
+    a2: "Jūsų $100 depozitas užtvirtina jums priskirtą komandą ir sunkvežimį pasirinktai dienai bei laikui.",
+    q3: "Ar pateikiate pastatams draudimo sertifikatą (COI)?",
+    a3: "Taip! Nemokamai išduodame COI sertifikatus daugiaaukščiams pastatams visoje Čikagoje.",
+    q4: "Kokiomis kalbomis kalba kraustytojai?",
+    a4: "Mūsų dispečeriai ir kraustytojai kalba angliškai, ispaniškai, lietuviškai ir rusiškai.",
+
+    // Search History / Archived Quotes
+    historyTitle: "Išsaugotų Rezervacijų Paieška",
+    searchPlaceholder: "Ieškoti pagal ID, vardą, el. paštą arba pašto kodą...",
+    noBookingsFound: "Išsaugotų rezervacijų nerasta.",
+    viewReceipt: "Rodyti Kvitą",
+
+    // Footer
+    footerDesc: "Licencijuoti Čikagos perkraustymo ekspertai Cook County su skaidriomis garantuotomis kainomis.",
+    footerLanguages: "Daugiakalbis Aptarnavimas: English • Español • Lietuvių • Русский",
+    rightsReserved: "Visos teisės saugomos. Ilinojaus ICC licencija #3280B.",
+
+    // AI Chat Component
+    aiSupportTitle: "Movers312 Dirbtinis Intelektas",
+    aiSupportSubtitle: "Mato Dispečerio Padėjėjas • 24/7",
+    aiGreeting: "👋 Sveiki! Aš esu Mato dirbtinio intelekto dispečerio padėjėjas. Turite klausimų apie perkraustymą Čikagoje, taisykles ar kainas? Paklauskite bet ko lietuviškai, angliškai, ispaniškai ar rusiškai!",
+    aiInputPlaceholder: "Klauskite apie įkainius, pakavimą, laiptus...",
+    instantQuoteBar: "Momentinės Cook County Kainos",
+    aiTyping: "Mato İI rašo žinutę...",
+  },
+
+  ru: {
+    // Top Bar & Header
+    iccLicense: "ДИСПЕТЧЕРСКАЯ ICC ИЛЛИНОЙСА #3280B",
+    liveDispatch: "Прямая Диспетчерская Водителей",
+    companyTitle: "MOVERS",
+    tagline: "Мувинговая Компания в Чикаго",
+    callNow: "Звоните (312) 385-9229",
+    languageSelect: "Язык",
+
+    // Hero Section
+    heroBadge: "ЭКСПЕРТЫ #1 ПО ЛОКАЛЬНЫМ ПЕРЕЕЗДАМ В ЧИКАГО",
+    heroTitle: "Мгновенный и Гарантированный Расчет Переезда в Чикаго",
+    heroSubtitle: "Без скрытых платежей за этажи, прозрачные тарифы, местная команда Cook County и 100% фиксированные цены на английском, испанском, литовском и русском языках.",
+    feature1: "Лицензия ICC и Страховка",
+    feature2: "Акция $0 за Локальный Проезд",
+    feature3: "Мгновенная Фиксированная Цена",
+    feature4: "Многоязычная Команда (EN/ES/LT/RU)",
+
+    // Form Steps & Estimator
+    step1Title: "1. Параметры Переезда и Расстояние",
+    sizeOfMoveLabel: "Размер Жилья / Объем",
+    sizeStudio: "Студия",
+    size1bed: "1-Комнатная Квартира",
+    size2bed: "2-Комнатная Квартира",
+    size3bed: "3+ Комнатная Квартира / Дом",
+
+    startZipLabel: "Начальный Почтовый Индекс (Чикаго)",
+    endZipLabel: "Конечный Почтовый Индекс (Чикаго)",
+    estHoursLabel: "Ориентировочное Время (Часов)",
+    estHoursHelp: "Минимум 2 часа, стандартно 3-4 часа для 1-2 комнат",
+
+    crewTruckLabel: "Состав Команды и Грузовик",
+    crew2: "2 Грузчика и 16-Футбовый Грузовик ($120/час)",
+    crew3: "3 Грузчика и 26-Футбовый Грузовик ($180/час)",
+    crew4: "4 Грузчика и 26-Футбовый Грузовик ($230/час)",
+
+    stairAccessLabel: "Подъем по Лестнице и Доступ",
+    stairNone: "Лифт / Первый Этаж (Без Доплаты)",
+    stairWalkup: "Лестница Без Лифта (+ $35/час)",
+    stairCourtyard: "Длинный Двор / Длинный Проход (+ $40/час)",
+
+    packingKitLabel: "Комплект Упаковочных Материалов (+ $45)",
+    packingKitDesc: "Включает 15 прочных коробок, скотч, стретч-пленку и коробки для одежды",
+
+    laborOnlyLabel: "Только Услуги Грузчиков (Транспорт Заказчика)",
+    heavyItemsLabel: "Доплата за Тяжелые Предметы (Пианино, Сейф, Мраморный Стол >300 фунтов) (+ $150)",
+
+    step2Title: "2. Расписание и Контактные Данные",
+    fullNameLabel: "Полное Имя",
+    fullNamePlaceholder: "напр., Михаил Иванов",
+    emailLabel: "Электронная Почта",
+    emailPlaceholder: "mikhail@example.com",
+    phoneLabel: "Номер Телефона",
+    phonePlaceholder: "(312) 555-0199",
+    movingDateLabel: "Желаемая Дата Переезда",
+    timeSlotLabel: "Предпочтительное Время Прибытия",
+    morningSlot: "Утренний Приезд (8:00 - 10:00)",
+    afternoonSlot: "Дневной Приезд (13:00 - 15:00)",
+    specialNotesLabel: "Особые Пожелания / Инструкции для Бригады",
+    specialNotesPlaceholder: "напр., Требуется бронь лифта в здании, ключи у консьержа...",
+
+    bookButton: "Зафиксировать Цену и Забронировать",
+    submitting: "Регистрация Бронирования...",
+
+    // Live Price Breakdown Card
+    guaranteedQuoteTitle: "Гарантированный Расчет Переезда",
+    baseRate: "Базовый Тариф Команды и Грузовика",
+    estimatedDistance: "Ориентировочное Расстояние",
+    heavyFee: "Доплата за Тяжелые Предметы",
+    stairFee: "Доплата за Лестницу / Проход",
+    packingFee: "Комплект Упаковочных Материалов",
+    laborDiscount: "Скидка Без Нашего Грузовика",
+    totalGuaranteed: "Итоговая Фиксированная Стоимость",
+    depositNotice: "Требуется депозит $100 через Cash App для подтверждения назначения бригады.",
+    priceLockBadge: "Гарантированная Фиксация Цены",
+
+    // Map & Route Visualizer
+    routeVisualizerTitle: "Интерактивная Карта Маршрута и Расстояние",
+    chicagoMapTitle: "Интерактивная Карта Покрытия Всего Города Чикаго",
+    wholeChicagoCoverage: "Мы Покрываем 100% Территории Города Чикаго и Округа Кук (Все 77 Районов)",
+    distanceMiles: "Расстояние Между Индексами",
+    noTravelFeePromotion: "Применена Акция $0 за Локальный Проезд!",
+
+    // Confirmation Receipt Modal / Success Box
+    successTitle: "Бронирование Переезда Подтверждено!",
+    reservationId: "ID Бронирования",
+    depositHeader: "Инструкция по Депозиту в Cash App",
+    depositBody: "Пожалуйста, отправьте залог $100 через Cash App на $Movers312, указав ваш ID Бронирования в примечании для финализации выезда.",
+    printReceipt: "Распечатать / Сохранить Квитанцию",
+    calculateAnother: "Рассчитать Другой Переезд",
+
+    // Interactive Checklist
+    checklistTitle: "Ваш Чек-лист Подготовки к Переезду",
+    checklistSubtitle: "Пошаговый план для спокойного и организованного переезда.",
+    task1: "Шаг 1: Разберите вещи в комнатах, отдайте или продайте ненужное",
+    task2: "Шаг 2: Надежно упакуйте хрупкую посуду (Или закажите наш упаковочный набор!)",
+    task3: "Шаг 3: Освободите проходы, забронируйте лифт или парковку",
+    task4: "Шаг 4: Подтвердите выезд бригады, отправив депозит $100 через Cash App",
+    task5: "Шаг 5: Сложите важные документы, ноутбук, лекарства и ключи в личный рюкзак",
+
+    // FAQ Section
+    faqTitle: "Часто Задаваемые Вопросы",
+    q1: "Есть ли скрытые платежи за этажи или длинные проходы?",
+    a1: "Нет! Все прозрачно рассчитывается в вашем онлайн-расчете на основе выбранных параметров.",
+    q2: "Как работает залог $100?",
+    a2: "Ваш залог $100 закрепляет за вами бригаду и грузовик на выбранную дату и время через Cash App.",
+    q3: "Предоставляете ли вы Сертификат Страхования (COI) для зданий?",
+    a3: "Да! Мы бесплатно предоставляем COI для высотных зданий с лифтом по всему Чикаго.",
+    q4: "На каких языках говорит персонал?",
+    a4: "Наша диспетчерская служба и грузчики говорят на английском, испанском, литовском и русском языках.",
+
+    // Search History / Archived Quotes
+    historyTitle: "Поиск Архива Расчетов и Бронирований",
+    searchPlaceholder: "Поиск по ID, имени, email или индексу...",
+    noBookingsFound: "Архивных расчетов не найдено.",
+    viewReceipt: "Посмотреть Квитанцию",
+
+    // Footer
+    footerDesc: "Лицензированные эксперты по переездам в Чикаго и Cook County с прозрачной фиксированной стоимостью.",
+    footerLanguages: "Многоязычная Поддержка: English • Español • Lietuvių • Русский",
+    rightsReserved: "Все права защищены. Лицензия ICC Иллинойса #3280B.",
+
+    // AI Chat Component
+    aiSupportTitle: "ИИ Поддержка Movers312",
+    aiSupportSubtitle: "Ассистент Диспетчера Мэтта • 24/7",
+    aiGreeting: "👋 Здравствуйте! Я ИИ-ассистент диспетчера Мэтта. Есть вопросы о переезде в Чикаго, правилах зданий или расчете стоимости? Спрашивайте на русском, английском, испанском или литовском!",
+    aiInputPlaceholder: "Спросите о тарифах, упаковке, этажах...",
+    instantQuoteBar: "Мгновенные Расчеты в Cook County",
+    aiTyping: "ИИ Мэтта печатает...",
+  },
+
+  ja: {
+    // Top Bar & Header
+    iccLicense: "イリノイ州 ICC ディスパッチ #3280B",
+    liveDispatch: "ライブ配車センター",
+    companyTitle: "MOVERS",
+    tagline: "シカゴ引越し専門会社",
+    callNow: "電話 (312) 385-9229",
+    languageSelect: "言語",
+
+    // Hero Section
+    heroBadge: "シカゴ地域No.1 ローカル引越しエキスパート",
+    heroTitle: "シカゴ引越しの即時保証お見積もり",
+    heroSubtitle: "階段の隠れ追加料金なし、透明性の高い料金体系。クック郡のプロスタッフが対応し、日本語・英語・スペイン語・リトアニア語・ロシア語・アラビア語で即時確定見積もりを提供します。",
+    feature1: "ICCライセンス＆保険完備",
+    feature2: "$0 ローカル出張費キャンペーン",
+    feature3: "オンライン即時確定見積もり",
+    feature4: "多言語対応スタッフ（日・英・西・リトアニア・露・アラビア語）",
+
+    // Form Steps & Estimator
+    step1Title: "1. 引越しの詳細と移動距離",
+    sizeOfMoveLabel: "お部屋のサイズ・規模",
+    sizeStudio: "ワンルーム / スタジオ",
+    size1bed: "1ベッドルーム",
+    size2bed: "2ベッドルーム",
+    size3bed: "3ベッドルーム以上",
+
+    startZipLabel: "出発地 郵便番号（シカゴ）",
+    endZipLabel: "目的地 郵便番号（シカゴ）",
+    estHoursLabel: "想定作業時間",
+    estHoursHelp: "最低2時間〜、1〜2部屋の標準作業時間は3〜4時間",
+
+    crewTruckLabel: "作業員＆トラック構成",
+    crew2: "作業員2名 ＆ 16フィートトラック ($120/時間)",
+    crew3: "作業員3名 ＆ 26フィートトラック ($180/時間)",
+    crew4: "作業員4名 ＆ 26フィートトラック ($230/時間)",
+
+    stairAccessLabel: "階段・アクセスの条件",
+    stairNone: "エレベーターあり / 1階（階段割増なし）",
+    stairWalkup: "階段での荷揚げ・荷降ろし (+ $35/時間)",
+    stairCourtyard: "長い中庭・通路の移動距離 (+ $40/時間)",
+
+    packingKitLabel: "梱包資材キット (+ $45)",
+    packingKitDesc: "強化ダンボール15箱、テープ、ストレッチフィルム、ハンガーボックス付き",
+
+    laborOnlyLabel: "作業員のみ手配（トラックはお客様準備）",
+    heavyItemsLabel: "重量物追加料金（ピアノ、金庫、135kg以上の大理石テーブルなど）(+ $150)",
+
+    step2Title: "2. 日時選択とご連絡先のご予約",
+    fullNameLabel: "お名前",
+    fullNamePlaceholder: "例: 山田 太郎",
+    emailLabel: "メールアドレス",
+    emailPlaceholder: "yamada@example.com",
+    phoneLabel: "電話番号",
+    phonePlaceholder: "(312) 555-0199",
+    movingDateLabel: "ご希望の引越し日",
+    timeSlotLabel: "到着ご希望時間帯",
+    morningSlot: "午前便 (8:00 AM - 10:00 AM)",
+    afternoonSlot: "午後便 (1:00 PM - 3:00 PM)",
+    specialNotesLabel: "特記事項・建物の連絡事項",
+    specialNotesPlaceholder: "例: 建物でエレベーターの予約が必要、鍵はフロントにて受取り...",
+
+    bookButton: "即時見積もりを確定して予約する",
+    submitting: "予約を登録中...",
+
+    // Live Price Breakdown Card
+    guaranteedQuoteTitle: "保証付き即時お見積もり",
+    baseRate: "基本料金（作業員＆トラック）",
+    estimatedDistance: "推定移動距離",
+    heavyFee: "重量物追加料金",
+    stairFee: "階段・通路追加料金",
+    packingFee: "梱包資材キット",
+    laborDiscount: "作業員のみ割引",
+    totalGuaranteed: "確定保証お見積もり合計",
+    depositNotice: "配車確定のため、Cash Appにて$100の予約金（デポジット）が必要です。",
+    priceLockBadge: "価格保証済み",
+
+    // Map & Route Visualizer
+    routeVisualizerTitle: "インタラクティブなルートマップと距離計算",
+    chicagoMapTitle: "シカゴ市全域インタラクティブ対応エリアマップ",
+    wholeChicagoCoverage: "シカゴ市100%全域・全77地域＆クック郡を完全カバー",
+    distanceMiles: "郵便番号間の移動距離",
+    noTravelFeePromotion: "$0 ローカル出張費キャンペーン適用中！",
+
+    // Confirmation Receipt Modal / Success Box
+    successTitle: "引越しのご予約が完了しました！",
+    reservationId: "予約ID",
+    depositHeader: "Cash App デポジット送金手順",
+    depositBody: "ドライバーの配置を確定するため、Cash Appで $100 を $Movers312 宛に送金し、メモ欄に予約IDをご記入ください。",
+    printReceipt: "予約確認書を印刷 / 保存",
+    calculateAnother: "新しいお見積もりを計算",
+
+    // Interactive Checklist
+    checklistTitle: "シカゴ引越しステップ別チェックリスト",
+    checklistSubtitle: "ストレスのないお引越しのために、順番に準備を進めましょう。",
+    task1: "ステップ 1: 部屋の整理と不要な物品の処分・寄付",
+    task2: "ステップ 2: 割れ物の丁寧な梱包（資材キットのご利用もおすすめ！）",
+    task3: "ステップ 3: 通路の確保、エレベーターの事前予約、駐車場所の確認",
+    task4: "ステップ 4: Cash Appで$100のデポジットを送金して配車を確定",
+    task5: "ステップ 5: 貴重品、PC、薬、鍵類をリュック等にまとめて持参",
+
+    // FAQ Section
+    faqTitle: "よくあるご質問 (FAQ)",
+    q1: "階段や長距離歩行の隠れた追加料金はありますか？",
+    a1: "いいえ！選択された条件に基づいて即時見積もりですべて透明に計算されます。",
+    q2: "$100のデポジットはどのように機能しますか？",
+    a2: "$100のデポジットでお客様のご希望日時に作業員とトラックが確保されます。Cash Appで支払可能です。",
+    q3: "建物の保険証明書（COI）を発行してもらえますか？",
+    a3: "はい！シカゴ市内の高層マンション等の要求に応じたCOIを無料発行いたします。",
+    q4: "スタッフは何語に対応していますか？",
+    a4: "英語、日本語、スペイン語、リトアニア語、ロシア語、アラビア語でスムーズなご案内が可能です。",
+
+    // Search History / Archived Quotes
+    historyTitle: "保存されたお見積もり・予約の検索",
+    searchPlaceholder: "予約ID、お名前、メール、郵便番号で検索...",
+    noBookingsFound: "保存されたお見積もりは見つかりませんでした。",
+    viewReceipt: "確認書を表示",
+
+    // Footer
+    footerDesc: "シカゴ・クック郡全域に対応するライセンス取得済みで明朗会計な引越し専門会社。",
+    footerLanguages: "多言語サポート: English • Español • Lietuvių • Русский • 日本語 • العربية",
+    rightsReserved: "All rights reserved. イリノイ州 ICC ディスパッチ #3280B.",
+
+    // AI Chat Component
+    aiSupportTitle: "Movers312 AI サポート",
+    aiSupportSubtitle: "配車アシスタント マット • 24時間受付",
+    aiGreeting: "👋 こんにちは！Movers312のAIアシスタントです。シカゴでの引越し、料金、建物ルールなど、何でも日本語・英語でお気軽にご質問ください！",
+    aiInputPlaceholder: "料金、梱包、階段について質問する...",
+    instantQuoteBar: "クック郡即時お見積もり",
+    aiTyping: "AIが回答を作成中...",
+  },
+
+  ar: {
+    // Top Bar & Header
+    iccLicense: "ترخيص إلينوي ICC #3280B",
+    liveDispatch: "مركز التوزيع المباشر",
+    companyTitle: "MOVERS",
+    tagline: "شركة نقل الأثاث في شيكاغو",
+    callNow: "اتصل بنا (312) 385-9229",
+    languageSelect: "اللغة",
+
+    // Hero Section
+    heroBadge: "الخبراء الأول في نقل الأثاث المحلي بشيكاغو",
+    heroTitle: "عروض أسعار مضمونة وفورية لنقل الأثاث بشيكاغو",
+    heroSubtitle: "بدون رسوم درج مخفية، أسعار شفافة، فريق نقل محلي في مقاطعة كوك، وعروض أسعار ملزمة 100٪ باللغات العربية والإنجليزية والفيليبينية والروسية والإسبانية.",
+    feature1: "مرخص من ICC ومؤمن بالكامل",
+    feature2: "عرض رسوم التنقل المحلي $0",
+    feature3: "عرض سعر ملزم فوري عبر الإنترنت",
+    feature4: "فريق متعدد اللغات (عربي / إنجليزي / إسباني / ليتواني / روسي / ياباني)",
+
+    // Form Steps & Estimator
+    step1Title: "1. تفاصيل النقل والمسافة",
+    sizeOfMoveLabel: "حجم السكن / نطاق العمل",
+    sizeStudio: "استوديو",
+    size1bed: "شقة غرفة نوم واحدة",
+    size2bed: "شقة غرفتي نوم",
+    size3bed: "منزل 3+ غرف نوم",
+
+    startZipLabel: "الرمز البريدي لنقطة الانطلاق (شيكاغو)",
+    endZipLabel: "الرمز البريدي لنقطة الوصول (شيكاغو)",
+    estHoursLabel: "الساعات المقدرة المطلوبة",
+    estHoursHelp: "الحد الأدنى ساعتان، والمعدل القياسي 3-4 ساعات للغرفتين",
+
+    crewTruckLabel: "تجهيز طاقم العمل والشاحنة",
+    crew2: "عاملان وشاحنة 16 قدم (120$/ساعة)",
+    crew3: "3 عمال وشاحنة 26 قدم (180$/ساعة)",
+    crew4: "4 عمال وشاحنة 26 قدم (230$/ساعة)",
+
+    stairAccessLabel: "السلالم وطبيعة الوصول",
+    stairNone: "مصعد / طابق أرضي (بدون رسوم درج)",
+    stairWalkup: "صعود سلالم متعددة (+ 35$/ساعة)",
+    stairCourtyard: "مسار ساحة/ممر طويل (+ 40$/ساعة)",
+
+    packingKitLabel: "حزمة أدوات التغليف (+ 45$)",
+    packingKitDesc: "تتضمن 15 صندوقاً مقوى، أشرطة، بلاستيك تغليف، وصناديق ملابس",
+
+    laborOnlyLabel: "خدمة عمالة فقط (العميل يوفر الشاحنة)",
+    heavyItemsLabel: "رسوم إضافية للأغراض الثقيلة جداً (بيانو، خزانة حديدية، طاولة رخام > 135 كجم) (+ 150$)",
+
+    step2Title: "2. الموعد وبيانات الحجز",
+    fullNameLabel: "الاسم الكامل",
+    fullNamePlaceholder: "مثال: أحمد محمد",
+    emailLabel: "البريد الإلكتروني",
+    emailPlaceholder: "ahmed@example.com",
+    phoneLabel: "رقم الهاتف",
+    phonePlaceholder: "(312) 555-0199",
+    movingDateLabel: "تاريخ النقل المطلوب",
+    timeSlotLabel: "فترة الوصول المفضلة",
+    morningSlot: "الفترة الصباحية (8:00 صباحاً - 10:00 صباحاً)",
+    afternoonSlot: "الفترة المسائية (1:00 ظهراً - 3:00 عصراً)",
+    specialNotesLabel: "ملاحظات خاصة لطاقم العمل / تعليمات المبنى",
+    specialNotesPlaceholder: "مثال: المبنى يتطلب حجز المصعد، المفتاح لدى الاستقبال...",
+
+    bookButton: "تأكيد السعر المباشر وحجز الموعد",
+    submitting: "جاري تسجيل الحجز...",
+
+    // Live Price Breakdown Card
+    guaranteedQuoteTitle: "عرض سعر مباشر ومضمون",
+    baseRate: "السعر الأساسي للعمال والشاحنة",
+    estimatedDistance: "المسافة المقدرة",
+    heavyFee: "رسوم الأغراض الثقيلة",
+    stairFee: "رسوم الدرج / الممر الطويل",
+    packingFee: "حزمة أدوات التغليف",
+    laborDiscount: "خصم العمالة فقط",
+    totalGuaranteed: "إجمالي السعر المضمن النهائي",
+    depositNotice: "يلزم دفع عربون تأمين بقيمة 100$ عبر تطبيق Cash App لتأكيد إرسال الفريق.",
+    priceLockBadge: "سعر مضمون ومثبت",
+
+    // Map & Route Visualizer
+    routeVisualizerTitle: "خريطة المسار التفاعلية ومحسب المسافة",
+    chicagoMapTitle: "خريطة تفاعلية لتغطية كامل مدينة شيكاغو",
+    wholeChicagoCoverage: "نغطي 100٪ من كامل مدينة شيكاغو ومقاطعة كوك (جميع الأحياء الـ 77)",
+    distanceMiles: "المسافة بين الرموز البريدية",
+    noTravelFeePromotion: "تم تطبيق عرض $0 رسوم انتقالات محلية!",
+
+    // Confirmation Receipt Modal / Success Box
+    successTitle: "تم تأكيد حجز نقل الأثاث بنجاح!",
+    reservationId: "رقم الحجز",
+    depositHeader: "تعليمات دفع العربون عبر Cash App",
+    depositBody: "يرجى إرسال عربون التأمين بقيمة 100$ عبر Cash App إلى $Movers312 مع كتابة رقم الحجز في الملاحظات لتأكيد السائق.",
+    printReceipt: "طباعة / حفظ إيصال التأكيد",
+    calculateAnother: "حساب عرض سعر آخر",
+
+    // Interactive Checklist
+    checklistTitle: "قائمة التجهيز لنقل الأثاث بشيكاغو",
+    checklistSubtitle: "تنظيم خطوة بخطوة لنقل أثاث مريح وبدون توتر.",
+    task1: "الخطوة 1: فرز الغرف والتبرع/البيع للأغراض غير الضرورية",
+    task2: "الخطوة 2: تغليف الأواني الزجاجية بعناية (أو اختيار حزمة أدوات التغليف لدينا!)",
+    task3: "الخطوة 3: إخلاء الممرات، حجز المصعد، أو ترتيب موقف الشاحنة",
+    task4: "الخطوة 4: تأكيد الحجز ودفع 100$ عربون عبر Cash App",
+    task5: "الخطوة 5: جمع الوثائق الهامة، اللابتوب، الأدوية والمفاتيح في حقيبة يدك",
+
+    // FAQ Section
+    faqTitle: "الأسئلة الشائعة",
+    q1: "هل هناك أي رسوم مخفية للسلالم أو المسافات الطويلة؟",
+    a1: "لا! يتم حساب كل شيء بشفافية في عرض السعر المباشر بناءً على اختياراتك.",
+    q2: "كيف يعمل عربون الـ 100 دولار؟",
+    a2: "عربون الـ 100$ يضمن حجز الفريق والشاحنة في اليوم والوقت المحددين عبر Cash App.",
+    q3: "هل توفرون شهادة تأمين المباني (COI)؟",
+    a3: "نعم! نوفر شهادات COI مجاناً للمباني ذات المجموعات السكنية والمصاعد في شيكاغو.",
+    q4: "ما هي اللغات التي يتحدث بها فريق العمل؟",
+    a4: "يتحدث فريق التوزيع والعمال باللغات العربية والإنجليزية والإسبانية والروسية واليابانية وال hisانية.",
+
+    // Search History / Archived Quotes
+    historyTitle: "البحث في الأرشيف والحجوزات السابقة",
+    searchPlaceholder: "البحث برقم الحجز، الاسم، البريد، أو الرمز البريدي...",
+    noBookingsFound: "لم يتم العثور على حجوزات محفوظة.",
+    viewReceipt: "عرض الإيصال",
+
+    // Footer
+    footerDesc: "شركة نقل الأثاث المعتمدة الأولى في شيكاغو ومقاطعة كوك بأسعار محددة وشفافة.",
+    footerLanguages: "دعم متعدد اللغات: English • Español • Lietuvių • Русский • 日本語 • العربية",
+    rightsReserved: "جميع الحقوق محفوظة. ترخيص إلينوي ICC #3280B.",
+
+    // AI Chat Component
+    aiSupportTitle: "دعم Movers312 بالذكاء الاصطناعي",
+    aiSupportSubtitle: "مساعد التوزيع للرئيس مات • 24/7",
+    aiGreeting: "👋 أهلاً بك! أنا مساعد الذكاء الاصطناعي لشركة Movers312. هل لديك أسئلة حول نقل الأثاث في شيكاغو، أو القوانين، أو الأسعار؟ اسألني بالعربية أو الإنجليزية!",
+    aiInputPlaceholder: "اسأل عن الأسعار، التغليف، السلالم...",
+    instantQuoteBar: "أسعار فورية لمقاطعة كوك",
+    aiTyping: "الذكاء الاصطناعي يكتب...",
   }
 };

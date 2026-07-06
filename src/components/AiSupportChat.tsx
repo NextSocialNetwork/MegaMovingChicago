@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, X, Bot, Loader2, Sparkles, Phone } from 'lucide-react';
-import { useLanguage } from '../i18n/LanguageContext';
+import { Language, translations } from '../i18n/translations';
 
 interface ChatMessage {
   id: string;
@@ -9,36 +9,36 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-export const AiSupportChat: React.FC = () => {
-  const { t, lang } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [inputText, setInputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+interface AiSupportChatProps {
+  currentLang: Language;
+}
 
-  // Initialize greeting message on first mount or language change
+export const AiSupportChat: React.FC<AiSupportChatProps> = ({ currentLang = 'en' }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const t = translations[currentLang] || translations.en;
+
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      id: '1',
+      sender: 'ai',
+      text: t.aiGreeting,
+      timestamp: new Date()
+    }
+  ]);
+
+  // Update initial greeting if language changes and no user messages exist yet
   useEffect(() => {
     setMessages(prev => {
-      if (prev.length === 0) {
-        return [
-          {
-            id: '1',
-            sender: 'ai',
-            text: t.aiChatGreeting,
-            timestamp: new Date()
-          }
-        ];
-      }
-      // If first message is greeting, update it to active language
-      if (prev[0] && prev[0].id === '1' && prev[0].sender === 'ai') {
-        const updated = [...prev];
-        updated[0] = { ...updated[0], text: t.aiChatGreeting };
-        return updated;
+      if (prev.length === 1 && prev[0].sender === 'ai') {
+        return [{ ...prev[0], text: t.aiGreeting }];
       }
       return prev;
     });
-  }, [t.aiChatGreeting, lang]);
+  }, [currentLang, t.aiGreeting]);
+
+  const [inputText, setInputText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -73,7 +73,7 @@ export const AiSupportChat: React.FC = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          language: lang,
+          language: currentLang,
           messages: updatedMessages.map(m => ({
             sender: m.sender,
             text: m.text
@@ -124,10 +124,10 @@ export const AiSupportChat: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-bold text-sm leading-tight flex items-center gap-1.5">
-                  {t.aiChatTitle}
+                  {t.aiSupportTitle}
                   <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                 </h3>
-                <p className="text-[11px] text-emerald-300">{t.aiChatSub}</p>
+                <p className="text-[11px] text-emerald-300">{t.aiSupportSubtitle}</p>
               </div>
             </div>
             <button
@@ -141,7 +141,7 @@ export const AiSupportChat: React.FC = () => {
 
           {/* Quick contact bar */}
           <div className="bg-emerald-950 px-3 py-1.5 text-[11px] text-emerald-200 flex items-center justify-between border-b border-emerald-800/50">
-            <span>Instant Cook County Quotes</span>
+            <span>{t.instantQuoteBar}</span>
             <a href="tel:+13123859229" className="flex items-center gap-1 text-emerald-400 hover:text-white font-bold transition underline">
               <Phone className="w-3 h-3" /> (312) 385-9229
             </a>
@@ -173,7 +173,7 @@ export const AiSupportChat: React.FC = () => {
               <div className="flex items-start">
                 <div className="bg-white text-[#122119] border border-[#e9e7df] rounded-2xl rounded-bl-xs px-3.5 py-2.5 text-xs shadow-xs flex items-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin text-emerald-600" />
-                  <span className="text-[#5e6c62] italic">Matt's AI is typing...</span>
+                  <span className="text-[#5e6c62] italic">{t.aiTyping}</span>
                 </div>
               </div>
             )}
@@ -186,7 +186,7 @@ export const AiSupportChat: React.FC = () => {
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={t.aiChatPlace}
+              placeholder={t.aiInputPlaceholder}
               className="flex-1 px-3 py-2 bg-[#f3f1e9] border border-[#e9e7df] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600/50 text-[#122119] placeholder-[#5e6c62]"
               disabled={isLoading}
             />
@@ -211,7 +211,7 @@ export const AiSupportChat: React.FC = () => {
           <MessageSquare className="w-6 h-6" />
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-emerald-700 rounded-full animate-pulse"></span>
         </div>
-        <span className="font-bold text-sm pr-1">{t.aiChatToggle}</span>
+        <span className="font-bold text-sm pr-1">{t.aiSupportTitle}</span>
       </button>
     </div>
   );
