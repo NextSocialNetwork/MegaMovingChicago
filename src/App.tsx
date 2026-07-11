@@ -10,8 +10,15 @@ import {
   Calendar,
   ClipboardList,
   HelpCircle,
-  Globe
+  Globe,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Booking } from './types';
 import { AiSupportChat } from './components/AiSupportChat';
 import { Language, LANGUAGES, translations } from './i18n/translations';
@@ -83,6 +90,16 @@ export default function App() {
   // Multilingual state
   const [currentLang, setCurrentLang] = useState<Language>('en');
   const t = translations[currentLang] || translations.en;
+
+  // Hero Slider state
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % 3);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const SIZE_LABELS = {
     studio: t.sizeStudio,
@@ -331,30 +348,187 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Structural Hero Banner */}
-      <section className="relative overflow-hidden bg-[#122119] text-white py-14 px-6 md:px-12">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      {/* Full Hero Slider with High Quality Chicago Backgrounds */}
+      <section className="relative overflow-hidden bg-[#122119] text-white min-h-[460px] sm:min-h-[480px] md:min-h-[520px] lg:min-h-[560px] flex items-center justify-center">
+        {/* Background Slider with AnimatePresence */}
+        <div className="absolute inset-0 w-full h-full">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${
+                  currentSlide === 0
+                    ? "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80" // Premium Moving Truck / Transport van
+                    : currentSlide === 1
+                    ? "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1920&q=80" // Cozy modern home with stacked moving boxes
+                    : "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1920&q=80" // High-quality truck trailer loaded with boxes and relocations cargo
+                })`
+              }}
+            />
+          </AnimatePresence>
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-emerald-900/40 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-mono">
-            <Truck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>{t.heroBadge}</span>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-none text-[#faf9f5]">
-            {t.heroTitle}
-          </h1>
-          <p className="text-[#a4ccb6] text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            {t.heroSubtitle}
-          </p>
+        {/* Ambient Overlay for contrast & premium aesthetic */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-[#122119]/60 z-10"></div>
 
-          <div className="pt-2 flex flex-wrap justify-center gap-2 text-[11px] font-mono font-bold text-emerald-300">
-            <span className="bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800/60">✓ {t.feature1}</span>
-            <span className="bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800/60">✓ {t.feature2}</span>
-            <span className="bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800/60">✓ {t.feature3}</span>
-            <span className="bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800/60">✓ {t.feature4}</span>
-          </div>
+        {/* Diagonal Light Accent */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(48,213,200,0.15),transparent_50%)] z-10 pointer-events-none" />
+
+        {/* Active Slide Text Content */}
+        <div className="relative z-20 w-full max-w-5xl mx-auto px-6 sm:px-12 md:px-16 text-center sm:text-left py-16 sm:py-20 flex flex-col justify-center space-y-6 select-none">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+            >
+              {/* Highlight Badge */}
+              <motion.div
+                initial={{ y: -15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.4 }}
+                className="inline-flex items-center gap-2 bg-emerald-950/80 text-[#30D5C8] border border-[#30D5C8]/40 px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-mono font-bold"
+              >
+                <Truck className="w-3.5 h-3.5" />
+                <span>
+                  {currentSlide === 0
+                    ? (t.heroBadge || "★ CHICAGO'S BEST MOVING COMPANY")
+                    : currentSlide === 1
+                    ? "🛡️ COOK COUNTY LICENSED AUTHORITY"
+                    : "📦 100% SATISFACTION GUARANTEED"}
+                </span>
+              </motion.div>
+
+              {/* Title */}
+              <motion.h1
+                initial={{ y: 15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-4xl text-white"
+              >
+                {currentSlide === 0 ? (
+                  <>
+                    {t.heroTitle?.includes("CHICAGO") ? (
+                      <>
+                        CHICAGO'S BEST <span className="text-[#30D5C8]">{t.companyTitle}</span>
+                      </>
+                    ) : (
+                      t.heroTitle || "CHICAGO'S BEST MOVING COMPANY"
+                    )}
+                  </>
+                ) : currentSlide === 1 ? (
+                  currentLang === 'es' ? "MUDANZAS DE APARTAMENTOS Y EDIFICIOS" :
+                  currentLang === 'lt' ? "PREMIUM BUTŲ IR REZIDENCINIS KRAUSTYMAS" :
+                  currentLang === 'ru' ? "ПРЕМИАЛЬНЫЙ КВАРТИРНЫЙ ПЕРЕЕЗД" :
+                  currentLang === 'ja' ? "プレミアムマンション・個人向け引越し" :
+                  currentLang === 'ar' ? "نقل شقق وسكني فاخر ومتميز" :
+                  "PREMIUM APARTMENT & RESIDENTIAL MOVERS"
+                ) : (
+                  currentLang === 'es' ? "MUDANZAS COMERCIALES Y OFICINAS" :
+                  currentLang === 'lt' ? "KOMERCINIS IR BIURŲ PERKRAUSTYMAS" :
+                  currentLang === 'ru' ? "КОММЕРЧЕСКИЙ ПЕРЕЕЗД И ОФИСЫ" :
+                  currentLang === 'ja' ? "法人・オフィス移転プロフェッショナル" :
+                  currentLang === 'ar' ? "نقل تجاري ومكاتب للشركات" :
+                  "COMMERCIAL OFFICE RELOCATION EXPERTS"
+                )}
+              </motion.h1>
+
+              {/* Subtitle description */}
+              <motion.p
+                initial={{ y: 15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed font-sans"
+              >
+                {currentSlide === 0 ? (
+                  t.heroSubtitle || "Movers312 — Licensed & Fully Insured Elite Residential & Commercial Relocation Services Across Chicagoland."
+                ) : currentSlide === 1 ? (
+                  currentLang === 'es' ? "Logística impecable de pasadizos, escaleras y ascensores de gran altura para una transición sin estrés." :
+                  currentLang === 'lt' ? "Nepriekaištinga logistika laiptais ir liftais dangoraižiuose sklandžiam kraustymuisi." :
+                  currentLang === 'ru' ? "Безупречная логистика на этажах без лифта и в небоскребах для спокойного переезда." :
+                  currentLang === 'ja' ? "階段作業、高層エレベーター、細い路地の搬入など、難しい条件もお任せください。" :
+                  currentLang === 'ar' ? "خدمات لوجستية مثالية للسلالم والمصاعد والأبراج لضمان تجربة نقل مريحة وخالية من التوتر." :
+                  "Flawless walkthrough, staircase, and high-rise elevator logistics across Chicago and Cook County for a stress-free transition."
+                ) : (
+                  currentLang === 'es' ? "Minimice el tiempo de inactividad con nuestros servicios eficientes de mudanza comercial de fin de semana y nocturnas." :
+                  currentLang === 'lt' ? "Sumažinkite prastovas naudodamiesi efektyviu komerciniu kraustymu savaitgaliais ar naktimis." :
+                  currentLang === 'ru' ? "Минимизация времени простоя благодаря быстрой и надежной работе в выходные и ночные смены." :
+                  currentLang === 'ja' ? "オフィスの休日に合わせた夜間・週末の迅速な移転作業で、業務のダウンタイムを最小限に抑えます。" :
+                  currentLang === 'ar' ? "تقليل وقت توقف العمل إلى الحد الأدنى بفضل خدمات النقل التجاري والمكتبي السريعة خلال عطلات نهاية الأسبوع أو الفترات المسائية." :
+                  "Minimize business downtime with our highly coordinated, professional weekend and after-hours commercial dispatch services."
+                )}
+              </motion.p>
+
+              {/* Checkmarks / Feature list */}
+              <motion.div
+                initial={{ y: 15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="pt-2 flex flex-wrap justify-center sm:justify-start gap-2.5 text-[10px] sm:text-xs font-mono font-bold text-[#30D5C8]"
+              >
+                {currentSlide === 0 ? (
+                  <>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-emerald-800/60 shadow-xs">✓ {t.feature1 || "100% Upfront Pricing"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-emerald-800/60 shadow-xs">✓ {t.feature2 || "No Hidden Fees"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-emerald-800/60 shadow-xs">✓ {t.feature3 || "Fully Licensed & Insured"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-emerald-800/60 shadow-xs">✓ {t.feature4 || "Professional Crew"}</span>
+                  </>
+                ) : currentSlide === 1 ? (
+                  <>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-[#30D5C8]/20 shadow-xs">✓ {currentLang === 'es' ? "Especialista en muebles pesados" : "Heavy Furniture & Piano Specialist"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-[#30D5C8]/20 shadow-xs">✓ {currentLang === 'es' ? "Asistencia el mismo día" : "Same-Day Last-Minute Help"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-[#30D5C8]/20 shadow-xs">✓ {currentLang === 'es' ? "Equipo de embalaje completo" : "Full Packing & Unpacking Kits"}</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-[#30D5C8]/20 shadow-xs">✓ {currentLang === 'es' ? "Coordinación dedicada" : "Dedicated Moving Coordinator"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-[#30D5C8]/20 shadow-xs">✓ {currentLang === 'es' ? "Desmontaje y montaje" : "Office Disassembly & Setup"}</span>
+                    <span className="bg-emerald-950/80 px-3.5 py-1.5 rounded-lg border border-[#30D5C8]/20 shadow-xs">✓ {currentLang === 'es' ? "Seguro de carga comercial" : "Full Commercial Cargo Insurance"}</span>
+                  </>
+                )}
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Navigation Arrow Left */}
+        <button
+          onClick={() => setCurrentSlide(prev => (prev === 0 ? 2 : prev - 1))}
+          aria-label="Previous Slide"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/40 hover:bg-[#30D5C8]/30 border border-white/10 hover:border-[#30D5C8]/50 text-white flex items-center justify-center transition-all duration-300 cursor-pointer backdrop-blur-xs focus:outline-none"
+        >
+          <ChevronLeft className="w-5 h-5 text-white/80 hover:text-white" />
+        </button>
+
+        {/* Navigation Arrow Right */}
+        <button
+          onClick={() => setCurrentSlide(prev => (prev + 1) % 3)}
+          aria-label="Next Slide"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/40 hover:bg-[#30D5C8]/30 border border-white/10 hover:border-[#30D5C8]/50 text-white flex items-center justify-center transition-all duration-300 cursor-pointer backdrop-blur-xs focus:outline-none"
+        >
+          <ChevronRight className="w-5 h-5 text-white/80 hover:text-white" />
+        </button>
+
+        {/* Pagination Dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+          {[0, 1, 2].map((idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
+                idx === currentSlide ? "bg-[#30D5C8] w-7" : "bg-white/30 hover:bg-white/60 w-2"
+              }`}
+            />
+          ))}
         </div>
       </section>
 
@@ -1353,21 +1527,38 @@ export default function App() {
             <p className="text-[10px] text-emerald-400 font-bold">
               {t.footerLanguages}
             </p>
-            <div className="text-[10px] text-[#30D5C8]/50">
-              © {new Date().getFullYear()} MOVERS312 Company. {t.rightsReserved}
+            
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-3 pt-1">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#30D5C8]/25 hover:text-white text-[#30D5C8] flex items-center justify-center border border-white/10 hover:border-[#30D5C8]/50 transition-all duration-300" title="Facebook">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#30D5C8]/25 hover:text-white text-[#30D5C8] flex items-center justify-center border border-white/10 hover:border-[#30D5C8]/50 transition-all duration-300" title="Instagram">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#30D5C8]/25 hover:text-white text-[#30D5C8] flex items-center justify-center border border-white/10 hover:border-[#30D5C8]/50 transition-all duration-300" title="X (Twitter)">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#30D5C8]/25 hover:text-white text-[#30D5C8] flex items-center justify-center border border-white/10 hover:border-[#30D5C8]/50 transition-all duration-300" title="LinkedIn">
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="text-[10px] text-[#30D5C8]/50 pt-1 font-mono">
+              Copyright ©️ Movers312.Com | 2026. All Rights Reserved.
             </div>
           </div>
 
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-[#30D5C8] font-extrabold uppercase tracking-wider text-xs">COMMUNICATION</h4>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 font-sans text-xs">
                 <Phone className="w-3.5 h-3.5 text-[#30D5C8]/60 shrink-0" />
                 <span>(312) 385-9229</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 font-sans text-xs">
                 <Mail className="w-3.5 h-3.5 text-[#30D5C8]/60 shrink-0" />
-                <span>Movers312.Com@Gmail.Com</span>
+                <span className="break-all">Movers312.Com@Gmail.Com</span>
               </li>
             </ul>
           </div>
@@ -1380,6 +1571,79 @@ export default function App() {
               <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold">USDOT COMPLIANT</span>
             </div>
           </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/10 my-8"></div>
+
+        {/* High Google Ranking Keywords & SEO Directory */}
+        <div className="max-w-7xl mx-auto space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2">
+            <h4 className="text-[#30D5C8] font-extrabold uppercase tracking-widest text-[10px] flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-[#30D5C8] rounded-full animate-pulse"></span>
+              CHICAGO'S BEST MOVING COMPANY — POPULAR SEARCHES & HIGH-RANKING KEYWORDS
+            </h4>
+            <span className="text-[9px] text-white/40 font-mono">Chicago & Cook County SEO Authority</span>
+          </div>
+          
+          <p className="text-[10px] leading-relaxed text-[#30D5C8]/60 font-sans">
+            As the premier choice for <strong className="text-white font-bold">Chicago's Best Moving Company</strong>, MOVERS312 delivers unmatched reliability and award-winning customer service across Illinois. Our certified teams specialize in <strong className="text-white font-bold">top-rated local movers Chicago</strong>, providing seamless <strong className="text-white font-bold">affordable apartment movers Chicago</strong> solutions for high-rises and walkups alike. Whether you require a <strong className="text-white font-bold">professional commercial office relocation</strong> or a customized <strong className="text-white font-bold">Cook County full-service packing and unpacking</strong> crew, we guarantee 100% pricing transparency. Connect with the finest <strong className="text-white font-bold">same-day last-minute movers Chicago</strong> has to offer, fully licensed and insured for your peace of mind.
+          </p>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-2">
+            <div className="bg-white/[0.02] border border-white/5 p-2.5 rounded-lg space-y-1.5">
+              <span className="text-white font-bold text-[9px] block border-b border-white/10 pb-1 uppercase tracking-wider text-[#30D5C8]">Local Moving</span>
+              <ul className="space-y-1 text-white/50 text-[9px] list-disc list-inside font-sans">
+                <li>Best Chicago Movers</li>
+                <li>Local Movers Chicago IL</li>
+                <li>Cook County Moving Co</li>
+                <li>Loop Downtown Relocation</li>
+              </ul>
+            </div>
+            <div className="bg-white/[0.02] border border-white/5 p-2.5 rounded-lg space-y-1.5">
+              <span className="text-white font-bold text-[9px] block border-b border-white/10 pb-1 uppercase tracking-wider text-[#30D5C8]">Specialized Help</span>
+              <ul className="space-y-1 text-white/50 text-[9px] list-disc list-inside font-sans">
+                <li>Chicago Piano Movers</li>
+                <li>Heavy Furniture Loading</li>
+                <li>Fine Art Transport IL</li>
+                <li>Last-Minute Movers</li>
+              </ul>
+            </div>
+            <div className="bg-white/[0.02] border border-white/5 p-2.5 rounded-lg space-y-1.5">
+              <span className="text-white font-bold text-[9px] block border-b border-white/10 pb-1 uppercase tracking-wider text-[#30D5C8]">Residential</span>
+              <ul className="space-y-1 text-white/50 text-[9px] list-disc list-inside font-sans">
+                <li>Apartment Movers Chicago</li>
+                <li>Walkup Stair Logistics</li>
+                <li>High-Rise Moving Guide</li>
+                <li>Student Moving Evanston</li>
+              </ul>
+            </div>
+            <div className="bg-white/[0.02] border border-white/5 p-2.5 rounded-lg space-y-1.5">
+              <span className="text-white font-bold text-[9px] block border-b border-white/10 pb-1 uppercase tracking-wider text-[#30D5C8]">Commercial</span>
+              <ul className="space-y-1 text-white/50 text-[9px] list-disc list-inside font-sans">
+                <li>Office Moving Chicago</li>
+                <li>Corporate Relocations</li>
+                <li>Retail Storage Transport</li>
+                <li>Commercial Movers IL</li>
+              </ul>
+            </div>
+            <div className="bg-white/[0.02] border border-white/5 p-2.5 rounded-lg space-y-1.5 col-span-2 sm:col-span-1">
+              <span className="text-white font-bold text-[9px] block border-b border-white/10 pb-1 uppercase tracking-wider text-[#30D5C8]">Packing Kits</span>
+              <ul className="space-y-1 text-white/50 text-[9px] list-disc list-inside font-sans">
+                <li>Full Packing & Box Kits</li>
+                <li>Fragile Glassware Wrap</li>
+                <li>Wardrobe Box Storage</li>
+                <li>Unpacking Help Chicago</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Absolute Bottom Footer Copyright */}
+        <div className="border-t border-white/5 mt-8 pt-6 text-center">
+          <p className="text-[10px] text-white/30 font-mono tracking-widest uppercase">
+            Copyright ©️ Movers312.Com | 2026.
+          </p>
         </div>
       </footer>
       

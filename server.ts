@@ -9,6 +9,17 @@ async function startServer() {
 
   app.use(express.json());
 
+  // CORS Middleware to support static hosting sites like Netlify calling the Cloud Run backend APIs
+  app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    if (req.method === "OPTIONS") {
+      return res.sendStatus(200);
+    }
+    next();
+  });
+
   // API health check
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });

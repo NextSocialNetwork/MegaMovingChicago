@@ -139,7 +139,7 @@ export const translations = {
     rightsReserved: "All rights reserved. Illinois ICC Dispatch #3280B.",
 
     // AI Chat Component
-    aiSupportTitle: "Movers312 AI Support",
+    aiSupportTitle: "AI Chat Support!",
     aiSupportSubtitle: "Matt's Dispatch Assistant • 24/7",
     aiGreeting: "👋 Hi there! I'm Matt's AI Dispatch Assistant. Have questions about moving across Chicago, building regulations, or getting an instant binding quote? Ask me anything in English, Spanish, Lithuanian, or Russian!",
     aiInputPlaceholder: "Ask about rates, packing, stairs...",
@@ -270,7 +270,7 @@ export const translations = {
     rightsReserved: "Todos los derechos reservados. Licencia ICC de Illinois #3280B.",
 
     // AI Chat Component
-    aiSupportTitle: "Soporte IA Movers312",
+    aiSupportTitle: "¡Soporte de Chat IA!",
     aiSupportSubtitle: "Asistente de Despacho de Matt • 24/7",
     aiGreeting: "👋 ¡Hola! Soy el asistente de despacho con IA de Matt. ¿Tienes preguntas sobre mudarte en Chicago, regulaciones de edificios o cómo obtener una cotización vinculante instantánea? ¡Pregúntame en español, inglés, lituano o ruso!",
     aiInputPlaceholder: "Pregunta sobre tarifas, embalaje, escaleras...",
@@ -401,7 +401,7 @@ export const translations = {
     rightsReserved: "Visos teisės saugomos. Ilinojaus ICC licencija #3280B.",
 
     // AI Chat Component
-    aiSupportTitle: "Movers312 Dirbtinis Intelektas",
+    aiSupportTitle: "DI Pokalbių Pagalba!",
     aiSupportSubtitle: "Mato Dispečerio Padėjėjas • 24/7",
     aiGreeting: "👋 Sveiki! Aš esu Mato dirbtinio intelekto dispečerio padėjėjas. Turite klausimų apie perkraustymą Čikagoje, taisykles ar kainas? Paklauskite bet ko lietuviškai, angliškai, ispaniškai ar rusiškai!",
     aiInputPlaceholder: "Klauskite apie įkainius, pakavimą, laiptus...",
@@ -532,7 +532,7 @@ export const translations = {
     rightsReserved: "Все права защищены. Лицензия ICC Иллинойса #3280B.",
 
     // AI Chat Component
-    aiSupportTitle: "ИИ Поддержка Movers312",
+    aiSupportTitle: "Чат-поддержка ИИ!",
     aiSupportSubtitle: "Ассистент Диспетчера Мэтта • 24/7",
     aiGreeting: "👋 Здравствуйте! Я ИИ-ассистент диспетчера Мэтта. Есть вопросы о переезде в Чикаго, правилах зданий или расчете стоимости? Спрашивайте на русском, английском, испанском или литовском!",
     aiInputPlaceholder: "Спросите о тарифах, упаковке, этажах...",
@@ -663,7 +663,7 @@ export const translations = {
     rightsReserved: "All rights reserved. イリノイ州 ICC ディスパッチ #3280B.",
 
     // AI Chat Component
-    aiSupportTitle: "Movers312 AI サポート",
+    aiSupportTitle: "AI チャットサポート!",
     aiSupportSubtitle: "配車アシスタント マット • 24時間受付",
     aiGreeting: "👋 こんにちは！Movers312のAIアシスタントです。シカゴでの引越し、料金、建物ルールなど、何でも日本語・英語でお気軽にご質問ください！",
     aiInputPlaceholder: "料金、梱包、階段について質問する...",
@@ -794,7 +794,7 @@ export const translations = {
     rightsReserved: "جميع الحقوق محفوظة. ترخيص إلينوي ICC #3280B.",
 
     // AI Chat Component
-    aiSupportTitle: "دعم Movers312 بالذكاء الاصطناعي",
+    aiSupportTitle: "دعم المحادثة بالذكاء الاصطناعي!",
     aiSupportSubtitle: "مساعد التوزيع للرئيس مات • 24/7",
     aiGreeting: "👋 أهلاً بك! أنا مساعد الذكاء الاصطناعي لشركة Movers312. هل لديك أسئلة حول نقل الأثاث في شيكاغو، أو القوانين، أو الأسعار؟ اسألني بالعربية أو الإنجليزية!",
     aiInputPlaceholder: "اسأل عن الأسعار، التغليف، السلالم...",

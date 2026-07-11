@@ -69,17 +69,52 @@ export const AiSupportChat: React.FC<AiSupportChatProps> = ({ currentLang = 'en'
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          language: currentLang,
-          messages: updatedMessages.map(m => ({
-            sender: m.sender,
-            text: m.text
-          }))
-        })
-      });
+      let response;
+      let usedFallback = false;
+      let primaryUrl = '/api/chat';
+      const fallbackUrl = 'https://ais-pre-j4vvmxrhkk5ez5u42qra5c-490559113161.us-west2.run.app/api/chat';
+
+      // If we are actively running on netlify.app, start directly with the Cloud Run production API
+      if (window.location.hostname.includes('netlify.app')) {
+        primaryUrl = fallbackUrl;
+        usedFallback = true;
+      }
+
+      const payload = {
+        language: currentLang,
+        messages: updatedMessages.map(m => ({
+          sender: m.sender,
+          text: m.text
+        }))
+      };
+
+      try {
+        response = await fetch(primaryUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        // Check if response is HTML (e.g. Netlify 404/fallback page) instead of valid JSON
+        const contentType = response.headers.get('content-type');
+        if (!response.ok || (contentType && !contentType.includes('application/json'))) {
+          if (!usedFallback) {
+            throw new Error('Fallback triggered because response was not valid JSON');
+          }
+        }
+      } catch (err) {
+        if (!usedFallback) {
+          // Retry using the absolute Cloud Run backend URL
+          response = await fetch(fallbackUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          usedFallback = true;
+        } else {
+          throw err;
+        }
+      }
 
       const data = await response.json();
 
