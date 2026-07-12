@@ -22,6 +22,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Booking } from './types';
 import { AiSupportChat } from './components/AiSupportChat';
 import { Language, LANGUAGES, translations } from './i18n/translations';
+import womanMovingSofa from './assets/images/woman_moving_sofa_1783854666266.jpg';
+import cozyMovingRoom from './assets/images/cozy_moving_room_1783855471413.jpg';
+import officeRelocationBoxes from './assets/images/office_relocation_boxes_1783855619274.jpg';
 
 // Complete City of Chicago & Cook County Neighborhood ZIP Grid (100% City Coverage)
 const CHICAGO_NEIGHBORHOODS: { [key: string]: { name: string; region: string; x: number; y: number } } = {
@@ -363,10 +366,10 @@ export default function App() {
               style={{
                 backgroundImage: `url(${
                   currentSlide === 0
-                    ? "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80" // Premium Moving Truck / Transport van
+                    ? officeRelocationBoxes
                     : currentSlide === 1
-                    ? "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1920&q=80" // Cozy modern home with stacked moving boxes
-                    : "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1920&q=80" // High-quality truck trailer loaded with boxes and relocations cargo
+                    ? cozyMovingRoom
+                    : womanMovingSofa
                 })`
               }}
             />
@@ -1543,10 +1546,6 @@ export default function App() {
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
-
-            <div className="text-[10px] text-[#30D5C8]/50 pt-1 font-mono">
-              Copyright ©️ Movers312.Com | 2026. All Rights Reserved.
-            </div>
           </div>
 
           <div className="md:col-span-3 space-y-3">
@@ -1642,7 +1641,7 @@ export default function App() {
         {/* Absolute Bottom Footer Copyright */}
         <div className="border-t border-white/5 mt-8 pt-6 text-center">
           <p className="text-[10px] text-white/30 font-mono tracking-widest uppercase">
-            Copyright ©️ Movers312.Com | 2026.
+            Copyright ©️ Movers312.Com | 2026. All Rights Reserved.
           </p>
         </div>
       </footer>
