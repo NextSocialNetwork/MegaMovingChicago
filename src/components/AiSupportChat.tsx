@@ -69,16 +69,30 @@ export const AiSupportChat: React.FC<AiSupportChatProps> = ({ currentLang = 'en'
     setIsLoading(true);
 
     try {
-      let response;
-      let usedFallback = false;
-      let primaryUrl = '/api/chat';
-      const fallbackUrl = 'https://ais-pre-j4vvmxrhkk5ez5u42qra5c-490559113161.us-west2.run.app/api/chat';
+      const getApiUrl = (): string => {
+        const envApiUrl = import.meta.env.VITE_API_URL;
+        if (envApiUrl) {
+          return envApiUrl.endsWith('/') ? envApiUrl.slice(0, -1) : envApiUrl;
+        }
 
-      // If we are actively running on netlify.app, start directly with the Cloud Run production API
-      if (window.location.hostname.includes('netlify.app')) {
-        primaryUrl = fallbackUrl;
-        usedFallback = true;
-      }
+        const hostname = window.location.hostname;
+        const isLocalOrCloudRun = 
+          hostname === 'localhost' || 
+          hostname === '127.0.0.1' || 
+          hostname.includes('us-west2.run.app') || 
+          hostname.includes('run.app');
+
+        if (isLocalOrCloudRun) {
+          return '';
+        }
+
+        // Return the Cloud Run production backend as the default for external hosting (Netlify/custom domains)
+        return 'https://ais-pre-j4vvmxrhkk5ez5u42qra5c-490559113161.us-west2.run.app';
+      };
+
+      const baseUrl = getApiUrl();
+      const primaryUrl = `${baseUrl}/api/chat`;
+      const fallbackUrl = 'https://ais-pre-j4vvmxrhkk5ez5u42qra5c-490559113161.us-west2.run.app/api/chat';
 
       const payload = {
         language: currentLang,
@@ -87,6 +101,8 @@ export const AiSupportChat: React.FC<AiSupportChatProps> = ({ currentLang = 'en'
           text: m.text
         }))
       };
+
+      let response;
 
       try {
         response = await fetch(primaryUrl, {
@@ -98,22 +114,27 @@ export const AiSupportChat: React.FC<AiSupportChatProps> = ({ currentLang = 'en'
         // Check if response is HTML (e.g. Netlify 404/fallback page) instead of valid JSON
         const contentType = response.headers.get('content-type');
         if (!response.ok || (contentType && !contentType.includes('application/json'))) {
-          if (!usedFallback) {
+          if (primaryUrl !== fallbackUrl) {
             throw new Error('Fallback triggered because response was not valid JSON');
           }
         }
       } catch (err) {
-        if (!usedFallback) {
+        if (primaryUrl !== fallbackUrl) {
           // Retry using the absolute Cloud Run backend URL
           response = await fetch(fallbackUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          usedFallback = true;
         } else {
           throw err;
         }
+      }
+
+      // Check the final response before parsing JSON
+      const contentType = response.headers.get('content-type');
+      if (!response.ok || (contentType && !contentType.includes('application/json'))) {
+        throw new Error('Server returned an invalid response. Please contact support.');
       }
 
       const data = await response.json();
