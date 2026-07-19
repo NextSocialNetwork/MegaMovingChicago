@@ -90,6 +90,7 @@ export const translations = {
     laborDiscount: "Labor Only Discount",
     totalGuaranteed: "Total Guaranteed Binding Quote",
     depositNotice: "$100 Security Deposit Required on Cash App to confirm driver dispatch.",
+    cancelFeeNotice: "In case you cancel your move, the $100 security deposit will be kept as a cancellation fee.",
     priceLockBadge: "Guaranteed Price Lock",
 
     // Map & Route Visualizer
@@ -121,7 +122,7 @@ export const translations = {
     q1: "Are there hidden fees for stairs or long walks?",
     a1: "No! Everything is calculated transparently in your instant quote based on your stair and walkway selections.",
     q2: "How does the $100 deposit work?",
-    a2: "Your $100 deposit locks in your assigned crew and truck for your chosen date and time slot, payable via Cash App.",
+    a2: "Your $100 deposit locks in your assigned crew and truck for your chosen date and time slot, payable via Cash App. Please note: in case of cancellation, the $100 security deposit will be kept as a cancellation fee.",
     q3: "Do you supply building Certificates of Insurance (COI)?",
     a3: "Yes! We provide complimentary COIs for high-rise elevator buildings across Chicago and Cook County.",
     q4: "What languages does your crew speak?",
@@ -221,6 +222,7 @@ export const translations = {
     laborDiscount: "Descuento Solo Mano de Obra",
     totalGuaranteed: "Cotización Total Garantizada y Vinculante",
     depositNotice: "Se requiere un depósito de seguridad de $100 en Cash App para confirmar el despacho.",
+    cancelFeeNotice: "En caso de cancelar su mudanza, el depósito de seguridad de $100 se retendrá como cargo por cancelación.",
     priceLockBadge: "Precio Bloqueado y Garantizado",
 
     // Map & Route Visualizer
@@ -252,7 +254,7 @@ export const translations = {
     q1: "¿Hay cargos ocultos por escaleras o caminatas largas?",
     a1: "¡No! Todo se calcula de manera transparente en su cotización instantánea según sus selecciones.",
     q2: "¿Cómo funciona el depósito de $100?",
-    a2: "Su depósito de $100 asegura el equipo y camión asignados para la fecha y hora elegidas, pagadero vía Cash App.",
+    a2: "Su depósito de $100 asegura el equipo y camión asignados para la fecha y hora elegidas, pagadero vía Cash App. Tenga en cuenta: en caso de cancelación, el depósito de seguridad de $100 se retendrá como cargo por cancelación.",
     q3: "¿Proporcionan Certificado de Seguro (COI) para edificios?",
     a3: "¡Sí! Proporcionamos COIs de cortesía para edificios con ascensor en todo Chicago y el condado de Cook.",
     q4: "¿Qué idiomas habla el personal?",
@@ -352,6 +354,7 @@ export const translations = {
     laborDiscount: "Tik Darbo Nuolaida",
     totalGuaranteed: "Galutinė Garantuota Privaloma Kaina",
     depositNotice: "Reikalingas $100 depozitas per Cash App vairuotojo priskyrimui patvirtinti.",
+    cancelFeeNotice: "Jeigu atšauksite pervežimą, $100 saugumo depozitas bus pasiliekamas kaip atšaukimo mokestis.",
     priceLockBadge: "Garantuota Užfiksuota Kaina",
 
     // Map & Route Visualizer
@@ -383,7 +386,7 @@ export const translations = {
     q1: "Ar yra paslėptų mokesčių už laiptus ar ilgą nešimą?",
     a1: "Ne! Viskas skaidriai apskaičiuojama momentinėje kalkuliacijoje pagal jūsų pasirinkimus.",
     q2: "Kaip veikia $100 depozitas?",
-    a2: "Jūsų $100 depozitas užtvirtina jums priskirtą komandą ir sunkvežimį pasirinktai dienai bei laikui.",
+    a2: "Jūsų $100 depozitas užtvirtina jums priskirtą komandą ir sunkvežimį pasirinktai dienai bei laikui. Pastaba: atšaukimo atveju $100 saugumo depozitas lieka kaip atšaukimo mokestis.",
     q3: "Ar pateikiate pastatams draudimo sertifikatą (COI)?",
     a3: "Taip! Nemokamai išduodame COI sertifikatus daugiaaukščiams pastatams visoje Čikagoje.",
     q4: "Kokiomis kalbomis kalba kraustytojai?",
@@ -483,6 +486,7 @@ export const translations = {
     laborDiscount: "Скидка Без Нашего Грузовика",
     totalGuaranteed: "Итоговая Фиксированная Стоимость",
     depositNotice: "Требуется депозит $100 через Cash App для подтверждения назначения бригады.",
+    cancelFeeNotice: "В случае отмены вашего переезда залог в размере $100 удерживается в качестве штрафа за отмену.",
     priceLockBadge: "Гарантированная Фиксация Цены",
 
     // Map & Route Visualizer
@@ -514,7 +518,7 @@ export const translations = {
     q1: "Есть ли скрытые платежи за этажи или длинные проходы?",
     a1: "Нет! Все прозрачно рассчитывается в вашем онлайн-расчете на основе выбранных параметров.",
     q2: "Как работает залог $100?",
-    a2: "Ваш залог $100 закрепляет за вами бригаду и грузовик на выбранную дату и время через Cash App.",
+    a2: "Ваш залог $100 закрепляет за вами бригаду и грузовик на выбранную дату и время через Cash App. Обратите внимание: в случае отмены бронирования залог в размере $100 удерживается в качестве штрафа за отмену.",
     q3: "Предоставляете ли вы Сертификат Страхования (COI) для зданий?",
     a3: "Да! Мы бесплатно предоставляем COI для высотных зданий с лифтом по всему Чикаго.",
     q4: "На каких языках говорит персонал?",
@@ -614,6 +618,7 @@ export const translations = {
     laborDiscount: "作業員のみ割引",
     totalGuaranteed: "確定保証お見積もり合計",
     depositNotice: "配車確定のため、Cash Appにて$100の予約金（デポジット）が必要です。",
+    cancelFeeNotice: "お引越しをキャンセルされる場合、この$100の予約金（デポジット）はキャンセル料として保持されます。",
     priceLockBadge: "価格保証済み",
 
     // Map & Route Visualizer
@@ -645,7 +650,7 @@ export const translations = {
     q1: "階段や長距離歩行の隠れた追加料金はありますか？",
     a1: "いいえ！選択された条件に基づいて即時見積もりですべて透明に計算されます。",
     q2: "$100のデポジットはどのように機能しますか？",
-    a2: "$100のデポジットでお客様のご希望日時に作業員とトラックが確保されます。Cash Appで支払可能です。",
+    a2: "$100のデポジットでお客様のご希望日時に作業員とトラックが確保されます。Cash Appで支払可能です。注意：キャンセルが発生した場合、この$100の予約金（デポジット）はキャンセル料として保持されます。",
     q3: "建物の保険証明書（COI）を発行してもらえますか？",
     a3: "はい！シカゴ市内の高層マンション等の要求に応じたCOIを無料発行いたします。",
     q4: "スタッフは何語に対応していますか？",
@@ -745,6 +750,7 @@ export const translations = {
     laborDiscount: "خصم العمالة فقط",
     totalGuaranteed: "إجمالي السعر المضمن النهائي",
     depositNotice: "يلزم دفع عربون تأمين بقيمة 100$ عبر تطبيق Cash App لتأكيد إرسال الفريق.",
+    cancelFeeNotice: "في حال إلغاء النقل، سيتم الاحتفاظ بعربون التأمين البالغ 100$ كرسوم إلغاء.",
     priceLockBadge: "سعر مضمون ومثبت",
 
     // Map & Route Visualizer
@@ -776,7 +782,7 @@ export const translations = {
     q1: "هل هناك أي رسوم مخفية للسلالم أو المسافات الطويلة؟",
     a1: "لا! يتم حساب كل شيء بشفافية في عرض السعر المباشر بناءً على اختياراتك.",
     q2: "كيف يعمل عربون الـ 100 دولار؟",
-    a2: "عربون الـ 100$ يضمن حجز الفريق والشاحنة في اليوم والوقت المحددين عبر Cash App.",
+    a2: "عربون الـ 100$ يضمن حجز الفريق والشاحنة في اليوم والوقت المحددين عبر Cash App. يرجى الملاحظة: في حال إلغاء الحجز، سيتم الاحتفاظ بعربون التأمين البالغ 100$ كرسوم إلغاء.",
     q3: "هل توفرون شهادة تأمين المباني (COI)؟",
     a3: "نعم! نوفر شهادات COI مجاناً للمباني ذات المجموعات السكنية والمصاعد في شيكاغو.",
     q4: "ما هي اللغات التي يتحدث بها فريق العمل؟",

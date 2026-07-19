@@ -74,20 +74,8 @@ export const AiSupportChat: React.FC<AiSupportChatProps> = ({ currentLang = 'en'
         if (envApiUrl) {
           return envApiUrl.endsWith('/') ? envApiUrl.slice(0, -1) : envApiUrl;
         }
-
-        const hostname = window.location.hostname;
-        const isLocalOrCloudRun = 
-          hostname === 'localhost' || 
-          hostname === '127.0.0.1' || 
-          hostname.includes('us-west2.run.app') || 
-          hostname.includes('run.app');
-
-        if (isLocalOrCloudRun) {
-          return '';
-        }
-
-        // Return the Cloud Run production backend as the default for external hosting (Netlify/custom domains)
-        return 'https://ais-pre-j4vvmxrhkk5ez5u42qra5c-490559113161.us-west2.run.app';
+        // Always prefer the relative /api/chat path first since it is supported by local dev, Cloud Run, and Netlify rewrites.
+        return '';
       };
 
       const baseUrl = getApiUrl();

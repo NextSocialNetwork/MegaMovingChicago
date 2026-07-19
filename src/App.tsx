@@ -1225,8 +1225,12 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-[#122119] rounded-lg p-3 text-[10px] text-[#a4ccb6] leading-relaxed border border-emerald-800/20">
-                  🛡️ {t.depositNotice}
+                <div className="bg-[#122119] rounded-lg p-3 text-[10px] text-[#a4ccb6] leading-relaxed border border-emerald-800/20 space-y-1.5">
+                  <div>🛡️ {t.depositNotice}</div>
+                  <div className="text-red-300 font-semibold flex items-start gap-1">
+                    <span>⚠️</span>
+                    <span>{t.cancelFeeNotice}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1345,6 +1349,10 @@ export default function App() {
                   <h4 className="text-sm font-extrabold text-[#122119] tracking-tight">{t.depositHeader}</h4>
                   <p className="text-xs text-[#4d5f54] font-serif leading-relaxed">
                     {t.depositBody}
+                  </p>
+                  <p className="text-[11px] text-red-700 font-sans font-bold flex items-center gap-1 mt-1.5">
+                    <span>⚠️</span>
+                    <span>{t.cancelFeeNotice}</span>
                   </p>
                 </div>
                 <a 
