@@ -21,6 +21,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { Booking } from './types';
 import { AiSupportChat } from './components/AiSupportChat';
+import { InfoPagesModal, PolicyTab } from './components/InfoPagesModal';
 import { Language, LANGUAGES, translations } from './i18n/translations';
 import womanMovingSofa from './assets/images/woman_moving_sofa_1783854666266.jpg';
 import cozyMovingRoom from './assets/images/cozy_moving_room_1783855471413.jpg';
@@ -147,6 +148,9 @@ export default function App() {
   
   // Modal viewer for historic receipt
   const [viewedBooking, setViewedBooking] = useState<Booking | null>(null);
+
+  // Policy & Info Pages Modal state
+  const [activePolicyTab, setActivePolicyTab] = useState<PolicyTab | null>(null);
 
   // Interactive Moving Company features state
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -1522,7 +1526,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="bg-black text-[#30D5C8]/75 py-12 px-6 md:px-12 border-t border-[#0b1410] text-[11px] font-mono">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-5 space-y-4">
+          <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
               <div className="bg-[#30D5C8]/10 text-[#30D5C8] p-2 rounded-lg flex items-center justify-center border border-[#30D5C8]/20">
                 <Truck className="w-4 h-4" />
@@ -1556,6 +1560,45 @@ export default function App() {
             </div>
           </div>
 
+          {/* Company & Legal Links Column */}
+          <div className="md:col-span-3 space-y-3">
+            <h4 className="text-[#30D5C8] font-extrabold uppercase tracking-wider text-xs">{t.companyLegal}</h4>
+            <ul className="space-y-2 font-sans text-xs">
+              <li>
+                <button
+                  onClick={() => setActivePolicyTab('about')}
+                  className="text-[#30D5C8]/80 hover:text-white hover:underline transition-colors text-left flex items-center gap-1.5"
+                >
+                  <span>›</span> {t.aboutUs}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActivePolicyTab('privacy')}
+                  className="text-[#30D5C8]/80 hover:text-white hover:underline transition-colors text-left flex items-center gap-1.5"
+                >
+                  <span>›</span> {t.privacyPolicy}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActivePolicyTab('disclaimer')}
+                  className="text-[#30D5C8]/80 hover:text-white hover:underline transition-colors text-left flex items-center gap-1.5"
+                >
+                  <span>›</span> {t.disclaimer}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActivePolicyTab('ai-policy')}
+                  className="text-[#30D5C8]/80 hover:text-white hover:underline transition-colors text-left flex items-center gap-1.5"
+                >
+                  <span>›</span> {t.aiChatPolicy}
+                </button>
+              </li>
+            </ul>
+          </div>
+
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-[#30D5C8] font-extrabold uppercase tracking-wider text-xs">COMMUNICATION</h4>
             <ul className="space-y-2">
@@ -1570,12 +1613,12 @@ export default function App() {
             </ul>
           </div>
 
-          <div className="md:col-span-4 space-y-3">
+          <div className="md:col-span-2 space-y-3">
             <h4 className="text-[#30D5C8] font-extrabold uppercase tracking-wider text-xs">SECURITY & LICENSING</h4>
-            <div className="flex flex-wrap gap-1">
-              <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold">100% BONDED</span>
-              <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold">COOK COUNTY ICC</span>
-              <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold">USDOT COMPLIANT</span>
+            <div className="flex flex-col gap-1.5">
+              <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold text-center">100% BONDED</span>
+              <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold text-center">COOK COUNTY ICC</span>
+              <span className="bg-[#30D5C8]/10 border border-[#30D5C8]/30 text-[#30D5C8] px-2 py-0.5 rounded text-[9px] font-bold text-center">USDOT COMPLIANT</span>
             </div>
           </div>
         </div>
@@ -1646,13 +1689,40 @@ export default function App() {
           </div>
         </div>
 
+        {/* Legal Policy Links Bar */}
+        <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-[#30D5C8]/80 font-sans border-t border-white/5 pt-6 mt-8">
+          <button onClick={() => setActivePolicyTab('about')} className="hover:text-white hover:underline transition-colors">
+            {t.aboutUs}
+          </button>
+          <span className="text-white/20">•</span>
+          <button onClick={() => setActivePolicyTab('privacy')} className="hover:text-white hover:underline transition-colors">
+            {t.privacyPolicy}
+          </button>
+          <span className="text-white/20">•</span>
+          <button onClick={() => setActivePolicyTab('disclaimer')} className="hover:text-white hover:underline transition-colors">
+            {t.disclaimer}
+          </button>
+          <span className="text-white/20">•</span>
+          <button onClick={() => setActivePolicyTab('ai-policy')} className="hover:text-white hover:underline transition-colors">
+            {t.aiChatPolicy}
+          </button>
+        </div>
+
         {/* Absolute Bottom Footer Copyright */}
-        <div className="border-t border-white/5 mt-8 pt-6 text-center">
+        <div className="mt-4 text-center">
           <p className="text-[10px] text-white/30 font-mono tracking-widest uppercase">
             Copyright ©️ Movers312.Com | 2026. All Rights Reserved.
           </p>
         </div>
       </footer>
+
+      {/* Info & Legal Policy Modal */}
+      <InfoPagesModal
+        activeTab={activePolicyTab}
+        onClose={() => setActivePolicyTab(null)}
+        onSelectTab={(tab) => setActivePolicyTab(tab)}
+        currentLang={currentLang}
+      />
       
       <AiSupportChat currentLang={currentLang} />
     </div>

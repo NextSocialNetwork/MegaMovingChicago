@@ -138,6 +138,11 @@ export const translations = {
     footerDesc: "Chicago's premier licensed relocation experts serving Cook County with transparent binding pricing.",
     footerLanguages: "Multilingual Support: English • Español • Lietuvių • Русский",
     rightsReserved: "All rights reserved. Illinois ICC Dispatch #3280B.",
+    aboutUs: "About Us",
+    privacyPolicy: "Privacy Policy",
+    disclaimer: "Disclaimer",
+    aiChatPolicy: "AI Chat Support Policy",
+    companyLegal: "Company & Legal",
 
     // AI Chat Component
     aiSupportTitle: "AI Chat Support!",
@@ -270,6 +275,11 @@ export const translations = {
     footerDesc: "Expertos con licencia en mudanzas en Chicago sirviendo a Cook County con precios vinculantes transparentes.",
     footerLanguages: "Soporte Multilingüe: English • Español • Lietuvių • Русский",
     rightsReserved: "Todos los derechos reservados. Licencia ICC de Illinois #3280B.",
+    aboutUs: "Sobre Nosotros",
+    privacyPolicy: "Política de Privacidad",
+    disclaimer: "Descargo de Responsabilidad",
+    aiChatPolicy: "Política del Chat de Asistencia IA",
+    companyLegal: "Empresa y Legal",
 
     // AI Chat Component
     aiSupportTitle: "¡Soporte de Chat IA!",
@@ -402,6 +412,11 @@ export const translations = {
     footerDesc: "Licencijuoti Čikagos perkraustymo ekspertai Cook County su skaidriomis garantuotomis kainomis.",
     footerLanguages: "Daugiakalbis Aptarnavimas: English • Español • Lietuvių • Русский",
     rightsReserved: "Visos teisės saugomos. Ilinojaus ICC licencija #3280B.",
+    aboutUs: "Apie Mus",
+    privacyPolicy: "Privatumo Politika",
+    disclaimer: "Atsakomybės Ribojimas",
+    aiChatPolicy: "DI Pokalbių Palaikymo Politika",
+    companyLegal: "Įmonė ir Teisinė Informacija",
 
     // AI Chat Component
     aiSupportTitle: "DI Pokalbių Pagalba!",
@@ -534,6 +549,11 @@ export const translations = {
     footerDesc: "Лицензированные эксперты по переездам в Чикаго и Cook County с прозрачной фиксированной стоимостью.",
     footerLanguages: "Многоязычная Поддержка: English • Español • Lietuvių • Русский",
     rightsReserved: "Все права защищены. Лицензия ICC Иллинойса #3280B.",
+    aboutUs: "О Нас",
+    privacyPolicy: "Политика Конфиденциальности",
+    disclaimer: "Отказ от Ответственности",
+    aiChatPolicy: "Политика ИИ-Чат Поддержки",
+    companyLegal: "Компания и Законодательство",
 
     // AI Chat Component
     aiSupportTitle: "Чат-поддержка ИИ!",
@@ -666,6 +686,11 @@ export const translations = {
     footerDesc: "シカゴ・クック郡全域に対応するライセンス取得済みで明朗会計な引越し専門会社。",
     footerLanguages: "多言語サポート: English • Español • Lietuvių • Русский • 日本語 • العربية",
     rightsReserved: "All rights reserved. イリノイ州 ICC ディスパッチ #3280B.",
+    aboutUs: "会社概要 (About Us)",
+    privacyPolicy: "プライバシーポリシー",
+    disclaimer: "免責事項 (Disclaimer)",
+    aiChatPolicy: "AIチャットサポート利用規約",
+    companyLegal: "会社情報・法的表記",
 
     // AI Chat Component
     aiSupportTitle: "AI チャットサポート!",
@@ -798,6 +823,11 @@ export const translations = {
     footerDesc: "شركة نقل الأثاث المعتمدة الأولى في شيكاغو ومقاطعة كوك بأسعار محددة وشفافة.",
     footerLanguages: "دعم متعدد اللغات: English • Español • Lietuvių • Русский • 日本語 • العربية",
     rightsReserved: "جميع الحقوق محفوظة. ترخيص إلينوي ICC #3280B.",
+    aboutUs: "من نحن",
+    privacyPolicy: "سياسة الخصوصية",
+    disclaimer: "إخلاء المسؤولية",
+    aiChatPolicy: "سياسة دعم الدعم عبر الذكاء الاصطناعي",
+    companyLegal: "الشركة والقانون",
 
     // AI Chat Component
     aiSupportTitle: "دعم المحادثة بالذكاء الاصطناعي!",
